@@ -1,0 +1,5 @@
+@import "variables";
+
+@function pxToRem($value){
+  @return ($value / $defaultFontSize) + rem
+}
