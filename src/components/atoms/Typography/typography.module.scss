@@ -1,0 +1,19 @@
+@import '../../../shared/styles/mixins';
+
+.typography {
+  &.main {
+    @include textMain;
+  }
+
+  &.secondary {
+    @include textSecondary;
+  }
+
+  &.body {
+    @include textBody;
+  }
+
+  &.title {
+    @include textTitle;
+  }
+}

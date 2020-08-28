@@ -6,4 +6,12 @@ export interface IButtonProps extends ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   uppercase?: boolean;
   loading?: boolean;
+  theme?:
+    'primary' |
+    'secondary' |
+    'tertiary' |
+    'outline-primary' |
+    'outline-secondary' |
+    'outline-tertiary';
+  variant?: never;
 }

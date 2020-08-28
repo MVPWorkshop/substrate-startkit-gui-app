@@ -4,3 +4,5 @@ export type DynamicObject<
   Value = any,
   Key extends (string | number) = string
 > = {[K in Key]: Value};
+
+export type Nullable<T = any> = T | undefined | null;

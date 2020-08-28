@@ -1,1 +1,22 @@
+$colors: (
+  'substrateGray': #1E1E1E,
+  'white': #FFFFFF,
+  'black': #0D0D0D,
+  'grayLighter': #D8D8D8,
+  'grayDark': #9B9B9B,
+  'grayDarker': #4A4A4A,
+  'grayDarkest': #252525,
+  'pink': #FF1864,
+  'green': #18FFB2,
+  'purple': #AA84C6,
+  'purpleGradient': linear-gradient(231.13deg, #6B98F5 -20.32%, #AA84C6 40.05%, #DCC5CE 109.92%),
+);
+
+$accents: (
+  'accentPrimary': map-get($colors, 'purpleGradient'),
+  'accentSecondary': map-get($colors, 'pink'),
+  'accentTertiary': map-get($colors, 'green'),
+);
+
 $defaultFontSize: 16px;
+$backgroundColor: map-get($colors, 'black');

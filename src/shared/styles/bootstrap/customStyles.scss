@@ -1,0 +1,85 @@
+@import "../variables";
+@import "../mixins";
+@import './customVariables';
+@import '~bootstrap/scss/bootstrap.scss';
+
+$primaryButtonColor: map-get($colors, 'purple');
+$primaryButtonGradientColor: map-get($accents, 'accentPrimary');
+$secondaryButtonColor: map-get($accents, 'accentSecondary');
+$tertiaryButtonColor: map-get($accents, 'accentTertiary');
+
+.btn {
+  font-family: 'Poppins';
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 0;
+
+  &:active, &:focus {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+}
+
+.btn-primary {
+  background: $primaryButtonGradientColor;
+  border: none;
+  color: $white;
+
+  &:hover, &:active, &:focus  {
+    color: $black;
+  }
+}
+
+.btn-outline-primary {
+  text-transform: unset;
+  background: $primaryButtonGradientColor;
+  border: 2px solid transparent;
+  border-image: $primaryButtonGradientColor;
+  border-image-slice: 1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:hover, &:active, &:focus {
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: $white;
+  }
+}
+
+.btn-secondary {
+  @include button-variant($secondaryButtonColor, $secondaryButtonColor);
+
+  &:active, &:focus, &:hover {
+    color: $black;
+  }
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($secondaryButtonColor);
+
+  &:hover, &:active, &:focus {
+    color: $white;
+    background-color: $secondaryButtonColor;
+  }
+}
+
+.btn-tertiary {
+  background: none;
+  @include button-variant($tertiaryButtonColor, $tertiaryButtonColor);
+
+  &:hover, &:active, &:focus {
+    color: $white;
+  }
+}
+
+.btn-tertiary-outline {
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  @include button-outline-variant($tertiaryButtonColor, $tertiaryButtonColor);
+
+  &:hover, &:active, &:focus {
+    background-color: $tertiaryButtonColor;
+    border-color: $tertiaryButtonColor;
+    color: $black;
+  }
+}

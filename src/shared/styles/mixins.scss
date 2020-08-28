@@ -3,3 +3,27 @@
 @function pxToRem($value){
   @return ($value / $defaultFontSize) + rem
 }
+
+@mixin textMain {
+  font-size: pxToRem(14px);
+  font-weight: normal;
+  color: map-get($colors, 'white');
+}
+
+@mixin textSecondary {
+  font-size: pxToRem(12px);
+  font-weight: normal;
+  color: map-get($colors, 'grayDark');
+}
+
+@mixin textBody {
+  font-size: pxToRem(14px);
+  font-weight: normal;
+  color: map-get($colors, 'grayLighter');
+}
+
+@mixin textTitle {
+  font-size: pxToRem(40px);
+  font-family: 'Manifoldcf-Regular';
+  font-weight: bold;
+}

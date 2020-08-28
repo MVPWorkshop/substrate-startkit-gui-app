@@ -1,0 +1,32 @@
+@import "../../../shared/styles/mixins";
+
+.landingPage {
+  padding: pxToRem(28px) pxToRem(40px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .mainContent {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    margin-top: pxToRem(70px);
+    max-width: 575px;
+    z-index: 2;
+  }
+
+  .startButton {
+    svg {
+      margin-right: 12px;
+    }
+
+    &:hover, &:focus, &:active {
+      svg {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7455%) hue-rotate(125deg) brightness(116%) contrast(109%);
+      }
+    }
+  }
+}
+
+

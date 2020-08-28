@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-plugin-module-resolver": "^4.0.0",
     "bootstrap": "^4.5.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",

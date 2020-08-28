@@ -1,0 +1,160 @@
+.landingBackground {
+  filter: blur(4px);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+
+  path {
+    transition: all 0.3s;
+  }
+
+  .boxSvg {
+    transform: rotate(-30deg) scale(1.2);
+
+    path {
+      &:nth-child(1) {
+        stroke-dasharray: 20%, 100%;
+        stroke-dashoffset: -30%;
+      }
+      &:nth-child(2) {
+        stroke-dasharray: 30%, 100%;
+        stroke-dashoffset: -50%;
+      }
+      &:nth-child(3) {
+        stroke-dasharray: 65%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(4) {
+        stroke-dasharray: 50%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(5) {
+        stroke-dasharray: 30%, 100%;
+        stroke-dashoffset: -60%;
+      }
+      &:nth-child(6) {
+        stroke-dasharray: 58%, 100%;
+        stroke-dashoffset: -70%;
+      }
+      &:nth-child(7) {
+        stroke-dasharray: 34%, 100%;
+        stroke-dashoffset: -50%;
+      }
+      &:nth-child(8) {
+        stroke-dasharray: 50%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(9) {
+        stroke-dasharray: 90%, 100%;
+        stroke-dashoffset: -70%;
+      }
+      &:nth-child(10) {
+        stroke-dasharray: 50%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(11) {
+        stroke-dasharray: 35%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(12) {
+        stroke-dasharray: 55%, 100%;
+        stroke-dashoffset: -30%;
+      }
+      &:nth-child(13) {
+        stroke-dasharray: 25%, 100%;
+        stroke-dashoffset: -30%;
+      }
+      &:nth-child(14) {
+        stroke-dasharray: 65%, 100%;
+        stroke-dashoffset: -30%;
+      }
+      &:nth-child(15) {
+        stroke-dasharray: 25%, 100%;
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(16) {
+        stroke-dasharray: 75%, 100%;
+        stroke-dashoffset: -30%;
+      }
+      &:nth-child(17) {
+        stroke-dasharray: 15%, 100%;
+        stroke-dashoffset: -80%;
+      }
+      &:nth-child(20) {
+        stroke-dasharray: 30%, 100%;
+        stroke-dashoffset: -10%;
+      }
+    }
+
+    &.active path {
+      &:nth-child(1) {
+        stroke-dashoffset: -1%;
+      }
+      &:nth-child(2) {
+        stroke-dashoffset: -80%;
+      }
+      &:nth-child(3) {
+        stroke-dashoffset: -25%;
+      }
+      &:nth-child(4) {
+        stroke-dashoffset: -25%;
+      }
+      &:nth-child(5) {
+        stroke-dashoffset: -70%;
+      }
+      &:nth-child(6) {
+        stroke-dashoffset: -80%;
+      }
+      &:nth-child(7) {
+        stroke-dashoffset: -50%;
+      }
+      &:nth-child(8) {
+        stroke-dasharray: 10%, 100%;
+        stroke-dashoffset: 0%;
+      }
+      &:nth-child(9) {
+        stroke-dashoffset: -70%;
+      }
+      &:nth-child(10) {
+        stroke-dasharray: 30%, 100%;
+        stroke-dashoffset: -0%;
+      }
+      &:nth-child(11) {
+        stroke-dashoffset: -5%;
+      }
+      &:nth-child(12) {
+        stroke-dashoffset: -90%;
+      }
+      &:nth-child(13) {
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(14) {
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(15) {
+        stroke-dashoffset: -10%;
+      }
+      &:nth-child(16) {
+        stroke-dashoffset: -40%;
+      }
+      &:nth-child(17) {
+        stroke-dashoffset: 20%;
+      }
+      &:nth-child(18) {
+        stroke-dashoffset: 20%;
+      }
+      &:nth-child(19) {
+        stroke-dasharray: 30%, 100%;
+        stroke-dashoffset: 20%;
+      }
+    }
+  }
+}
+
+
