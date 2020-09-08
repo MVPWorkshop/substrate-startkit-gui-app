@@ -24,6 +24,12 @@
 
 @mixin textTitle {
   font-size: pxToRem(40px);
-  font-family: 'Manifoldcf-Regular';
+  font-family: 'Poppins';
   font-weight: bold;
+}
+
+@mixin removeButtonDefaultStyles {
+  border: none;
+  background: none;
+  outline: none;
 }

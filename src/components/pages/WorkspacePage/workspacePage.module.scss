@@ -1,0 +1,22 @@
+@import '../../../shared/styles/variables';
+
+.workspacePage {
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+
+  .sidebarContent {
+    width: $sidebarWidth;
+    align-self: stretch;
+  }
+
+  .workspaceContent {
+    max-height: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 80px 48px 0;
+  }
+}

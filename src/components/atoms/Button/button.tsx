@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Fragment } from 'react';
 import { Button as BTButton, ButtonProps, Spinner } from 'react-bootstrap';
 import { IButtonProps } from './button.types';
 import styles from './button.module.scss';
@@ -33,7 +33,8 @@ const Button: FC<IButtonProps> = (props) => {
     className,
     disabled && 'disabledElement',
     uppercase && styles.uppercase,
-    tertiaryClassName
+    tertiaryClassName,
+    props.flat && styles.flat
   );
 
   return (
@@ -46,10 +47,10 @@ const Button: FC<IButtonProps> = (props) => {
     >
       <span>
       {loading ?
-        <>
+        <Fragment>
           <Spinner animation={'border'}/>
           <span>Please wait</span>
-        </>
+        </Fragment>
         :
         children
       }

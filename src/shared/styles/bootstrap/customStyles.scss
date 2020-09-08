@@ -39,7 +39,7 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  &:hover, &:active, &:focus {
+    &:hover, &:active, &:focus {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: $white;
   }
@@ -82,4 +82,9 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
     border-color: $tertiaryButtonColor;
     color: $black;
   }
+}
+
+.modal-content {
+  background-color: $black;
+  max-width: 524px;
 }

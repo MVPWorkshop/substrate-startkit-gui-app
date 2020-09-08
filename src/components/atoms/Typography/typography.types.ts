@@ -11,12 +11,16 @@ export enum ETypographyVariant {
 interface ITypographyBaseProps extends IWithClass {
   element?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   fontFamily?: EFontFamily;
+  fontSize?: number;
+  uppercase?: boolean;
+  style?: React.CSSProperties;
 }
 
 // If we are using variant you can't change color, accent or font family
 interface ITypographyVariantProps extends ITypographyBaseProps {
   variant?: ETypographyVariant;
   fontFamily?: never;
+  fontSize?: never;
   color?: never;
   accent?: never;
 }

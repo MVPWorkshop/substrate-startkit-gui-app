@@ -7,6 +7,7 @@ import styles from './landingPage.module.scss';
 import Typography from '../../atoms/Typography/typography';
 import Button from '../../atoms/Button/button';
 import LandingBackground from '../../molecules/LandingBackground/landingBackground';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
 
@@ -24,7 +25,7 @@ const LandingPage = () => {
       </div>
       <div className={styles.mainContent}>
         <SubstrateLogo className='mb-9'/>
-        <Typography className='font-weight-normal fs-40 lh-56 text-center mb-16'>
+        <Typography fontSize={40} className='font-weight-normal lh-56 text-center mb-16'>
           Start building your blockchain with&nbsp;
           <Typography
             element='span'
@@ -39,12 +40,14 @@ const LandingPage = () => {
           onFocus={setHover(true)}
           onBlur={setHover(false)}
         >
-          <Button
-            theme='outline-secondary'
-            className={styles.startButton}
-          >
-            <SubstrateLogoRed/><span>Build your blockchain</span>
-          </Button>
+          <Link to='/workspace'>
+            <Button
+              theme='outline-secondary'
+              className={styles.startButton}
+            >
+              <SubstrateLogoRed/><span>Build your blockchain</span>
+            </Button>
+          </Link>
         </span>
       </div>
     </PageLayout>

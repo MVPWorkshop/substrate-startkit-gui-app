@@ -1,0 +1,30 @@
+@import '../../../shared/styles/mixins';
+@import '../../../shared/styles/variables';
+
+.tab {
+  display: flex;
+  flex-direction: column;
+
+  .labelBox {
+    @include removeButtonDefaultStyles;
+
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: map-get($colors, 'grayHighlight');
+    }
+  }
+
+  .highlightBar {
+    width: 100%;
+    height: 1.6px;
+    background-color: map-get($colors, 'grayDarker');
+
+    &.selected {
+      background-color: map-get($colors, 'pink');
+    }
+  }
+}

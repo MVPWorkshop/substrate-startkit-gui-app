@@ -19,9 +19,12 @@ const Typography: React.FC<ITypographyProps> = (props) => {
     variant,
     color,
     className,
+    uppercase,
+    fontSize,
     accent,
     fontFamily,
-    children
+    children,
+    style
   } = props;
 
   const classColor = color && colorToClassName(color).color;
@@ -37,8 +40,11 @@ const Typography: React.FC<ITypographyProps> = (props) => {
         classColor,
         classAccent,
         classFontFamily,
+        fontSize ? `fs-${fontSize}` : '',
+        uppercase ? 'text-uppercase' : '',
         className
       )}
+      style={style}
     >
       {children}
     </Element>

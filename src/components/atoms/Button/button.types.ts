@@ -12,6 +12,8 @@ export interface IButtonProps extends ButtonProps {
     'tertiary' |
     'outline-primary' |
     'outline-secondary' |
-    'outline-tertiary';
+    'outline-tertiary' |
+    'link';
   variant?: never;
+  flat?: boolean;
 }
