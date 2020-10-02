@@ -24,6 +24,7 @@ import moment from 'moment';
 import styles from './modalPalletDetails.module.scss';
 import commonModalStyles from '../modalCommon.module.scss';
 import { classes } from '../../../../shared/utils/styles.util';
+import { addPalletToGenerator } from '../../../../redux/generator/generator.redux.actions';
 
 enum ETabs {
   OVERVIEW = 'OVERVIEW',
@@ -55,10 +56,15 @@ const ModalPalletDetails: React.FC = () => {
     dispatch(togglePalletDetailsModal(pallet.name, false));
   }
 
+  const addPalletClick = () => {
+    onHide();
+    dispatch(addPalletToGenerator(pallet.name));
+  }
+
   const addPalletButton = () => {
     return (
       <div className='d-flex justify-content-end'>
-        <Button theme={'outline-primary'}>
+        <Button theme={'outline-primary'} onClick={addPalletClick}>
           <Typography fontSize={14} element={'span'}>
             Add pallet
           </Typography>

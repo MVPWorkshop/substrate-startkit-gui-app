@@ -1,28 +1,45 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { ReactComponent as SubstrateLogoSvg } from '../../../shared/assets/substrate_logo.svg';
 import { ReactComponent as TemplatesIconSvg } from '../../../shared/assets/templates_icon.svg';
 import { ReactComponent as PalletsIconSvg } from '../../../shared/assets/pallets_icon.svg';
 import styles from './sidebar.module.scss';
-import { ESidebarMenus } from './sidebar.types';
+import { ESidebarMenus, ISidebarProps } from './sidebar.types';
 import SidebarIcon from '../../atoms/SidebarIcon/sidebarIcon';
 import SidebarPalletsMenu from '../SidebarPalletsMenu/sidebarPalletsMenu';
 import { useAnchor } from '../../../shared/hooks/anchor.hook';
 import SideBarTemplatesMenu from '../SidebarTemplatesMenu/sidebarTemplatesMenu';
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<ISidebarProps> = (props) => {
+
+  const {
+    onMenuChange
+  } = props;
 
   const [selectedMenu, setSelectedMenu] = useState<ESidebarMenus | undefined>();
+  const [isFirstMount, setIsFirstMount] = useState(true);
 
   const toggleMenu = (menu: ESidebarMenus) => {
     setSelectedMenu(prevState => {
-      console.log(prevState)
       if (prevState === menu) {
         return undefined;
       } else {
         return menu;
       }
     });
+
   }
+
+  useEffect(() => {
+    if (!isFirstMount) {
+      onMenuChange(selectedMenu)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedMenu, onMenuChange])
+
+  useEffect(() => {
+    setIsFirstMount(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const [anchorDimensions, sidebarRef] = useAnchor();
 

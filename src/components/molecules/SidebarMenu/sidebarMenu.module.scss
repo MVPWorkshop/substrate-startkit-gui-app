@@ -9,5 +9,6 @@
   overflow-x: hidden;
   padding: 36px 16px 84px 16px;
   height: 100%;
-  width: 329px;
+  width: $sidebarMenuWidth;
+  z-index: 5;
 }

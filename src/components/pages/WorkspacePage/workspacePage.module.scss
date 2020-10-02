@@ -8,6 +8,7 @@
   .sidebarContent {
     width: $sidebarWidth;
     align-self: stretch;
+    flex-shrink: 0;
   }
 
   .workspaceContent {
@@ -15,8 +16,7 @@
     overflow: hidden;
     flex-grow: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px 80px 48px 0;
+    padding: 48px 48px 48px 0;
+    flex-direction: column;
   }
 }

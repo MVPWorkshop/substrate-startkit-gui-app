@@ -1,0 +1,11 @@
+.workspaceGraphContent {
+  flex-grow: 1;
+  align-self: stretch;
+  display: flex;
+
+  .dragAndDrop {
+    z-index: 3;
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+  }
+}

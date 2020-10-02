@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC } from 'react';
 import { Button as BTButton, ButtonProps, Spinner } from 'react-bootstrap';
 import { IButtonProps } from './button.types';
 import styles from './button.module.scss';
@@ -47,10 +47,10 @@ const Button: FC<IButtonProps> = (props) => {
     >
       <span>
       {loading ?
-        <Fragment>
+        <div className='d-flex align-items-center justify-content-center'>
           <Spinner animation={'border'}/>
-          <span>Please wait</span>
-        </Fragment>
+          <span className='ml-1'>Please wait</span>
+        </div>
         :
         children
       }

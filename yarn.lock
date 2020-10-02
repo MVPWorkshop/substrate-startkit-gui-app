@@ -11120,6 +11120,16 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
+vis-data@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/vis-data/-/vis-data-7.0.0.tgz#71ff8ec06e4d0b99f1c8cdecfdf97309eb4562cf"
+  integrity sha512-qKpyAQ9UMT0QygLbCulgabKkgfo8aVkuWSqhvEiaah/iy/Dvj17iMFChUU+UIioorWlweXcp5ziXoMLIl7hTAg==
+
+vis-network@^8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/vis-network/-/vis-network-8.3.2.tgz#229e2569e91f0e9f391f8c32ca935e320a84d388"
+  integrity sha512-vJDctP2gZzZbpgpB+MJxNudsqRGdkRablwdLOWd6yZKZQuEBZltOJSBaSCsyQVMD1gY8mjuYhNRoIcy7g+PDvQ==
+
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"

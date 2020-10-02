@@ -4,12 +4,12 @@ import Typography from '../../atoms/Typography/typography';
 import { ETypographyVariant } from '../../atoms/Typography/typography.types';
 import { EColor, EFontFamily } from '../../../shared/types/styles.types';
 import Button from '../../atoms/Button/button';
-import styles from './welcomeContent.module.scss';
-import { IWelcomeContentProps } from './welcomeContent.types';
+import styles from './workspaceWelcomeContent.module.scss';
+import { IWorkspaceWelcomeContentProps } from './workspaceWelcomeContent.types';
 
-const WelcomeContent: React.FC<IWelcomeContentProps> = (props) => {
+const WorkspaceWelcomeContent: React.FC<IWorkspaceWelcomeContentProps> = (props) => {
   return (
-    <div className={styles.welcomeContent}>
+    <div className={styles.workspaceWelcomeContent}>
       <WelcomeIllustration className={styles.welcomeImg}/>
       <div className='mb-4'>
         <Typography variant={ETypographyVariant.TITLE}>
@@ -38,4 +38,4 @@ const WelcomeContent: React.FC<IWelcomeContentProps> = (props) => {
   )
 }
 
-export default WelcomeContent;
+export default WorkspaceWelcomeContent;
