@@ -6,7 +6,8 @@ import { EPallets } from '../../shared/types/pallets.types';
 export enum EModalName {
   PALLET_DETAILS = 'PALLET_DETAILS',
   TEMPLATE_DETAILS = 'TEMPLATE_DETAILS',
-  ADD_NEW_DEPENDENCY = 'ADD_NEW_DEPENDENCY'
+  ADD_NEW_DEPENDENCY = 'ADD_NEW_DEPENDENCY',
+  REMOVE_DEPENDENCY = 'REMOVE_DEPENDENCY'
 }
 
 export enum EUiReduxActions {

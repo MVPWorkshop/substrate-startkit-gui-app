@@ -46,8 +46,6 @@ export function togglePalletDetailsModal(palletName: EPallets, modalState: boole
 
 export function toggleTemplateDetailsModal(templateId: string, modalState: boolean): Thunk<void> {
   return dispatch => {
-
-    console.log(templateId)
     // If closing modal set selected template to undefined
     dispatch(setSelectedTemplate(modalState === true ? templateId : undefined));
     dispatch(toggleModal(EModalName.TEMPLATE_DETAILS, modalState));

@@ -31,6 +31,19 @@ export function removeDuplicates<T extends string>(firstArray: T[], secondArray:
 }
 
 /**
+ * @description Keeps elements in first array which are also present in the second
+ * @param firstArray
+ * @param secondArray
+ */
+export function keepDuplicates<T extends string>(firstArray: T[], secondArray: T[]): T[] {
+  const map = stringArrayToMap(secondArray);
+
+  return firstArray.filter(
+    element => map.get(element)
+  );
+}
+
+/**
  * @description Merges two arrays, removing duplicates if any
  * @param firstArray
  * @param secondArray

@@ -14,18 +14,21 @@ import { EColor } from '../../../../shared/types/styles.types';
 import { setSelectedPallet, toggleModal } from '../../../../redux/ui/ui.redux.actions';
 import { addPalletToGenerator } from '../../../../redux/generator/generator.redux.actions';
 import SuccessIcon from '../../../atoms/SuccessIcon/successIcon';
+import { EPallets } from '../../../../shared/types/pallets.types';
+import { recursivelyFindPalletDependencies } from '../../../../shared/utils/generator.util';
 
 enum EAddNewDependencyModalSteps {
   DEPENDENCY_CHECK = 'DEPENDENCY_CHECK',
   DEPENDENCY_DETAILS = 'DEPENDENCY_DETAILS',
-  CONFIRMATION = 'CONFIRMATION',
   SUCCESS = 'SUCCESS'
 }
 
 const ModalAddNewDependency = () => {
 
+  const pallets = useSelector<RootState, RootState['pallets']>(state => state.pallets)
   const pallet = useSelector<RootState, IPalletResponse | undefined>(getCurrentlySelectedPallet);
   const [currentStep, setCurrentStep] = useState<EAddNewDependencyModalSteps>(EAddNewDependencyModalSteps.DEPENDENCY_CHECK);
+  const [palletDeps, setPalletDeps] = useState<EPallets[]>([]);
 
   const dispatch = useDispatch();
 
@@ -55,10 +58,10 @@ const ModalAddNewDependency = () => {
                 dependencies={[pallet!.name]}
                 label={'Selected'}
               />
-              { pallet!.dependencies.using.length ?
+              { palletDeps.length ?
                 <DependencyList
                   className={'ml-9'}
-                  dependencies={pallet!.dependencies.using}
+                  dependencies={palletDeps}
                   label={'Using'}
                 /> : null
               }
@@ -69,46 +72,10 @@ const ModalAddNewDependency = () => {
             <Button
               key='btn-add-all-pallets'
               theme={'outline-primary'}
-              onClick={() => setCurrentStep(EAddNewDependencyModalSteps.CONFIRMATION)}
-            >
-              <Typography element={'span'} fontSize={14}>
-                Add all pallets
-              </Typography>
-            </Button>
-          </Fragment>
-        )
-      }
-      case EAddNewDependencyModalSteps.CONFIRMATION: {
-        return (
-          <Fragment>
-            <Typography textAlign={'center'} fontSize={24} className='fw-600'>
-              Please confirm
-            </Typography>
-            <Typography
-              className={'mb-14'}
-              textAlign={'center'}
-              fontSize={14}
-              color={EColor.GRAY_LIGHTER}
-            >
-              Are you sure you want to continue?
-            </Typography>
-            <Button
-              key={'confirm'}
-              theme={'outline-primary'}
-              className={'mb-2'}
               onClick={addPallet}
             >
               <Typography element={'span'} fontSize={14}>
-                Confirm
-              </Typography>
-            </Button>
-            <Button
-              key={'cancel'}
-              theme={'flat'}
-              onClick={closeModal}
-            >
-              <Typography element={'span'} fontSize={14}>
-                Cancel
+                Add all pallets
               </Typography>
             </Button>
           </Fragment>
@@ -145,9 +112,21 @@ const ModalAddNewDependency = () => {
   }
 
   const onModalOpen = () => {
+    const depsToAdd = recursivelyFindPalletDependencies({
+      pallets,
+      palletName: pallet.name,
+      dependencyType: 'using'
+    });
+    setPalletDeps(depsToAdd)
+
     setCurrentStep(EAddNewDependencyModalSteps.DEPENDENCY_CHECK);
     setTimeout(() => {
-      setCurrentStep(EAddNewDependencyModalSteps.DEPENDENCY_DETAILS);
+      if (depsToAdd.length) {
+        setCurrentStep(EAddNewDependencyModalSteps.DEPENDENCY_DETAILS);
+      } else {
+        addPallet();
+        setCurrentStep(EAddNewDependencyModalSteps.SUCCESS);
+      }
     }, 2000);
   }
 

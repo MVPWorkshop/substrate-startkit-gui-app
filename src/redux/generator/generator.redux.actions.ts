@@ -4,6 +4,7 @@ import { Thunk } from '../redux.types';
 import AuthService from '../../services/auth/auth.service';
 import GeneratorService from '../../services/generator/generator.service';
 import ActionUtil from '../../shared/utils/action.util';
+import { recursivelyFindPalletDependencies } from '../../shared/utils/generator.util';
 
 export function addGeneratorDependencies(pallets: EPallets[]): AddGeneratorDependencies {
   return {
@@ -31,8 +32,19 @@ export function addPalletToGenerator(pallet: EPallets): Thunk<void> {
       return;
     }
 
+    const depsToAdd = recursivelyFindPalletDependencies({
+      pallets: getState().pallets,
+      palletName: pallet,
+      dependencyType: 'using'
+    })
+
+    console.log([
+      ...depsToAdd,
+      pallet
+    ])
+
     dispatch(addGeneratorDependencies([
-      ...palletDetails.dependencies.using,
+      ...depsToAdd,
       pallet
     ]));
   }
@@ -46,8 +58,14 @@ export function removePalletFromGenerator(pallet: EPallets): Thunk<void> {
       return;
     }
 
+    const depsToRemove = recursivelyFindPalletDependencies({
+      pallets: getState().pallets,
+      palletName: pallet,
+      dependencyType: 'usedBy'
+    })
+
     dispatch(removeGeneratorDependencies([
-      ...palletDetails.dependencies.usedBy,
+      ...depsToRemove,
       pallet
     ]));
   }

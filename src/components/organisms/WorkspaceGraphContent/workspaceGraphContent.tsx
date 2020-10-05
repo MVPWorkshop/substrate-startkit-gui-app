@@ -4,11 +4,12 @@ import styles from './workspaceGraphContent.module.scss';
 import Graph from '../../molecules/Graph/graph';
 import { Droppable } from 'react-dragtastic';
 import { palletPreviewDraggableType } from '../../molecules/PalletPreview/palletPreview';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { EPallets } from '../../../shared/types/pallets.types';
 import { setSelectedPallet, toggleModal } from '../../../redux/ui/ui.redux.actions';
 import { EModalName } from '../../../redux/ui/ui.redux.types';
 import { ReactComponent as GraphInstructionsSvg } from '../../../shared/assets/graph-instructions.svg';
+import { RootState } from '../../../redux/redux.types';
 
 const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => {
 
@@ -18,6 +19,8 @@ const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => 
   } = props;
 
   const dispatch = useDispatch();
+  const generatorDeps = useSelector<RootState, EPallets[]>(state => state.generator.dependencies);
+  const isGraphEmpty = !generatorDeps.length;
 
   const onPalletDrop = (palletName: EPallets) => {
     dispatch(setSelectedPallet(palletName));
@@ -39,13 +42,17 @@ const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => 
                 width: parentRef.current?.clientWidth,
                 height: (parentRef.current?.clientHeight)
               }}
-            >
-              <GraphInstructionsSvg />
-            </div>
+            />
           }
         </Droppable>
       }
-      <Graph />
+      { isGraphEmpty ?
+        <div className='flex-grow-1 d-flex align-items-center justify-content-center'>
+          <GraphInstructionsSvg />
+        </div>
+        :
+        <Graph/>
+      }
     </div>
   )
 };

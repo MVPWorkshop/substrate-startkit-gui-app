@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import ModelPalletDetails from './ModalPalletDetails/modalPalletDetails';
 import ModalTemplateDetails from './ModalTemplateDetails/modalTemplateDetails';
 import ModalAddNewDependency from './ModalAddNewDependency/modalAddNewDependency';
+import ModalRemoveDependency from './ModalRemoveDependency/modalRemoveDependency';
 
 export const Modals = () => {
   return (
@@ -9,6 +10,7 @@ export const Modals = () => {
       <ModelPalletDetails />
       <ModalTemplateDetails />
       <ModalAddNewDependency />
+      <ModalRemoveDependency />
     </Fragment>
   )
 }
