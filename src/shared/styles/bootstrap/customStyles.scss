@@ -84,7 +84,26 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
   }
 }
 
+.btn-flat {
+  background: none;
+
+  &:hover, &:active, &:focus {
+    background: none;
+    color: $primaryButtonColor
+  }
+}
+
 .modal-content {
   background-color: $black;
   max-width: 524px;
+}
+
+.modal-title {
+  background-color: map-get($colors, 'black');
+  padding: 20px 20px 0;
+}
+
+.modal-body {
+  background-color: map-get($colors, 'black');
+  padding: 40px 64px;
 }

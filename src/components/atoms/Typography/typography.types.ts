@@ -1,3 +1,4 @@
+import React from 'react';
 import { IWithClass } from '../../../shared/types/common.types';
 import { EAccent, EColor, EFontFamily } from '../../../shared/types/styles.types';
 
@@ -14,6 +15,7 @@ interface ITypographyBaseProps extends IWithClass {
   fontSize?: number;
   uppercase?: boolean;
   style?: React.CSSProperties;
+  textAlign?: React.CSSProperties['textAlign'];
 }
 
 // If we are using variant you can't change color, accent or font family

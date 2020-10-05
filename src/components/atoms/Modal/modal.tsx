@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Modal as BSModal, ModalBody, ModalFooter, ModalTitle } from 'react-bootstrap';
 import { ModalType } from './modal.types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,10 @@ const Modal: ModalType = (props) => {
 
   const {
     name,
-    onHide
+    onHide,
+    onOpen,
+    disableHide,
+    ...otherProps
   } = props;
 
   const modalOpen = useSelector<RootState, boolean>(state => {
@@ -19,6 +22,10 @@ const Modal: ModalType = (props) => {
   const dispatch = useDispatch();
 
   const closeModal = () => {
+    if (disableHide) {
+      return;
+    }
+
     dispatch(toggleModal(name, false));
 
     if (onHide) {
@@ -26,11 +33,19 @@ const Modal: ModalType = (props) => {
     }
   }
 
+  useEffect(() => {
+    if (modalOpen && onOpen) {
+      onOpen();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modalOpen]);
+
   return (
     <BSModal
+      key={name}
       show={modalOpen}
       onHide={closeModal}
-      {...props}
+      {...otherProps}
     />
   )
 }

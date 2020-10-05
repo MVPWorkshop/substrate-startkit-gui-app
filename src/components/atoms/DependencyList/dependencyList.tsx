@@ -3,6 +3,7 @@ import { IDependencyListProps } from './dependencyList.types';
 import styles from './dependencyList.module.scss';
 import Typography from '../Typography/typography';
 import { EColor } from '../../../shared/types/styles.types';
+import { classes } from '../../../shared/utils/styles.util';
 
 const DependencyList: React.FC<IDependencyListProps> = (props) => {
 
@@ -12,7 +13,7 @@ const DependencyList: React.FC<IDependencyListProps> = (props) => {
   } = props;
 
   return (
-    <div className={styles.dependencyList}>
+    <div className={classes(styles.dependencyList, props.className)}>
       <Typography
         className='font-weight-bold'
         fontSize={12}

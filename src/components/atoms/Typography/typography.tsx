@@ -24,7 +24,8 @@ const Typography: React.FC<ITypographyProps> = (props) => {
     accent,
     fontFamily,
     children,
-    style
+    style,
+    textAlign
   } = props;
 
   const classColor = color && colorToClassName(color).color;
@@ -44,7 +45,10 @@ const Typography: React.FC<ITypographyProps> = (props) => {
         uppercase ? 'text-uppercase' : '',
         className
       )}
-      style={style}
+      style={{
+        ...style,
+        textAlign
+      }}
     >
       {children}
     </Element>

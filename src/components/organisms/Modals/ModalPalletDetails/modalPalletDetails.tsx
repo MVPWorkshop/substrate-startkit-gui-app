@@ -25,6 +25,7 @@ import styles from './modalPalletDetails.module.scss';
 import commonModalStyles from '../modalCommon.module.scss';
 import { classes } from '../../../../shared/utils/styles.util';
 import { addPalletToGenerator } from '../../../../redux/generator/generator.redux.actions';
+import { getCurrentlySelectedPallet } from '../../../../redux/pallets/pallets.redux.selectors';
 
 enum ETabs {
   OVERVIEW = 'OVERVIEW',
@@ -37,16 +38,7 @@ const ModalPalletDetails: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const pallet = useSelector<RootState, IPalletResponse | undefined>(state => {
-
-    const selectedPallet = state.ui.selectedPallet;
-
-    if (selectedPallet) {
-      return state.pallets[selectedPallet];
-    } else {
-      return undefined;
-    }
-  });
+  const pallet = useSelector<RootState, IPalletResponse | undefined>(getCurrentlySelectedPallet);
 
   if (!pallet) {
     return null;

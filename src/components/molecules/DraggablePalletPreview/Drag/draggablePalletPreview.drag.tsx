@@ -9,7 +9,12 @@ const styles: React.CSSProperties = {
   opacity: 0.9,
   width: `${palletPreviewWidth}px`,
   position: 'fixed',
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  zIndex: 120,
+  borderImage: 'linear-gradient(231.13deg, #6B98F5 -20.32%, #AA84C6 40.05%, #DCC5CE 109.92%)',
+  borderWidth: 2,
+  borderImageSlice: 1,
+  borderStyle: 'solid'
 }
 
 const DraggablePalletPreviewDrag: React.FC<IDraggablePalletPreviewDragProps> = (props) => {

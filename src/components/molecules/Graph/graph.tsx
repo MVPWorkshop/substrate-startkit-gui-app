@@ -66,6 +66,7 @@ const Graph = () => {
         network.destroy();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkCanvasRef]);
 
   const [hoveredNodeId, setHoveredNodeId] = useState<IGraphState['hoveredNodeId']>()
@@ -86,8 +87,8 @@ const Graph = () => {
   }
 
   useEffect(() => {
-    // console.log('Node id changed')
     updateHoveredNodePosition();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hoveredNodeId])
 
   const onNodeHover: OnNodeHover = (data) => {
@@ -128,6 +129,7 @@ const Graph = () => {
         network.off('dragStart', onGraphDragStart)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [network, hoveredNodeId]);
 
   useEffect(() => {

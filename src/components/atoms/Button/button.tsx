@@ -17,13 +17,15 @@ const Button: FC<IButtonProps> = (props) => {
   } = props;
 
   let variant: string | undefined;
-  let tertiaryClassName: string | undefined;
+  let customTheme: string | undefined;
 
   // If tertiary variant (not native to bootstrap) add the class manually
   if (theme === 'tertiary') {
-    tertiaryClassName = ' btn-tertiary';
+    customTheme = ' btn-tertiary';
   } else if (theme === 'outline-tertiary') {
-    tertiaryClassName = 'btn-tertiary-outline';
+    customTheme = 'btn-tertiary-outline';
+  } else if (theme === 'flat') {
+    customTheme = 'btn-flat';
   } else {
     variant = theme;
   }
@@ -33,7 +35,7 @@ const Button: FC<IButtonProps> = (props) => {
     className,
     disabled && 'disabledElement',
     uppercase && styles.uppercase,
-    tertiaryClassName,
+    customTheme,
     props.flat && styles.flat
   );
 
