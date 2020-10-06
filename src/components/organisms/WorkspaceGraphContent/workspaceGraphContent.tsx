@@ -27,6 +27,11 @@ const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => 
     dispatch(toggleModal(EModalName.ADD_NEW_DEPENDENCY, true));
   }
 
+  const parentDimensions = {
+    width: parentRef.current ? parentRef.current.clientWidth : 0,
+    height: parentRef.current ? parentRef.current.clientHeight : 0
+  }
+
   return (
     <div className={styles.workspaceGraphContent}>
       { displayDragAndDrop &&
@@ -38,10 +43,7 @@ const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => 
             <div
               {...dragState.events}
               className={styles.dragAndDrop}
-              style={{
-                width: parentRef.current?.clientWidth,
-                height: (parentRef.current?.clientHeight)
-              }}
+              style={parentDimensions}
             />
           }
         </Droppable>
@@ -51,7 +53,7 @@ const WorkspaceGraphContent: React.FC<IWorkspaceGraphContentProps> = (props) => 
           <GraphInstructionsSvg />
         </div>
         :
-        <Graph/>
+        <Graph {...parentDimensions} />
       }
     </div>
   )

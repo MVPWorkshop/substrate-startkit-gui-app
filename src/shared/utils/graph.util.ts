@@ -43,9 +43,7 @@ export const graphOptions: GraphOptions = {
     shape: "custom",
     ctxRenderer: nodeRenderer
   },
-  autoResize: false,
-  height: '99%',
-  width: '99%',
+  autoResize: true,
   edges: {
     width: 1.6,
     arrows: {

@@ -18,6 +18,7 @@ import WorkspaceGraphContent from '../../organisms/WorkspaceGraphContent/workspa
 import { toggleModal } from '../../../redux/ui/ui.redux.actions';
 import { EModalName } from '../../../redux/ui/ui.redux.types';
 import { resetGenerator } from '../../../redux/generator/generator.redux.actions';
+import useWindowSize from '../../../shared/hooks/windowResize.hook';
 
 enum EWorkspaceContent {
   WELCOME_TEXT = 'WELCOME_TEXT',
@@ -32,8 +33,9 @@ const WorkspacePage = () => {
   const [displayDnDSurface, setDisplayDnDSurface] = useState<boolean>(false);
 
   const workspaceContentParentRef = useRef<HTMLDivElement>(null);
-
   const generatorDeps = useSelector<RootState, EPallets[]>(state => state.generator.dependencies);
+
+  useWindowSize()
 
   const fetchData = () => {
     dispatch(fetchAllPallets());

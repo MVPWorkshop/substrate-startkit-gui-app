@@ -2,18 +2,25 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/redux.types';
 import { EPallets } from '../../../shared/types/pallets.types';
-import { IGraphState, OnNodeHover, OnNodeZoom } from './graph.types';
+import { IGraphProps, IGraphState, OnNodeHover, OnNodeZoom } from './graph.types';
 import { DynamicObject } from '../../../shared/types/util.types';
 import { IPalletResponse } from '../../../services/pallets/palletsService.types';
 import { Network } from 'vis-network';
 import { graphOptions } from '../../../shared/utils/graph.util';
 import styles from './graph.module.scss';
 import GraphNodeOptions from '../../atoms/GraphNodeOptions/graphNodeOptions';
+import Typography from '../../atoms/Typography/typography';
+import { EColor } from '../../../shared/types/styles.types';
+import { classes } from '../../../shared/utils/styles.util';
+import { ReactComponent as PlusIcon } from '../../../shared/assets/plus_icon.svg';
+import { ReactComponent as MinusIcon } from '../../../shared/assets/minus_icon.svg';
 
 export const nodeWidth = 160;
 export const nodeHeight = 45;
 
-const Graph = () => {
+const graphControlsHeight = 40;
+
+const Graph: React.FC<IGraphProps> = (props) => {
 
   const networkCanvasRef = useRef<HTMLDivElement>(null)
   const generatorDeps = useSelector<RootState, EPallets[]>(state => state.generator.dependencies);
@@ -58,7 +65,15 @@ const Graph = () => {
 
   useEffect(() => {
     if (networkCanvasRef && networkCanvasRef.current) {
-      setNetwork(new Network(networkCanvasRef.current, {}, graphOptions));
+
+      const graphWidth = props.width;
+      const graphHeight = props.height - graphControlsHeight;
+
+      setNetwork(new Network(networkCanvasRef.current, {}, {
+        ...graphOptions,
+        height: Math.max(graphHeight, 0).toString(),
+        width: graphWidth.toString()
+      }));
     }
 
     return () => {
@@ -67,7 +82,7 @@ const Graph = () => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [networkCanvasRef]);
+  }, [networkCanvasRef, props.width, props.height]);
 
   const [hoveredNodeId, setHoveredNodeId] = useState<IGraphState['hoveredNodeId']>()
   const [hoveredNodePosition, setHoveredNodePosition] = useState<IGraphState['hoveredNodePosition']>();
@@ -112,6 +127,24 @@ const Graph = () => {
     setHoveredNodePosition(undefined);
   }
 
+  const changeZoomLevelFor = (n: number) => {
+    if (network) {
+      const newScale = Math.max(Math.min(graphScale + n, 10), 0.1);
+      network.moveTo({
+        scale: newScale
+      })
+      setGraphScale(newScale)
+    }
+  }
+
+  const zoomIn = () => {
+    changeZoomLevelFor(0.1);
+  }
+
+  const zoomOut = () => {
+    changeZoomLevelFor(-0.1);
+  }
+
   useEffect(() => {
     if (network) {
       network.on('hoverNode', onNodeHover)
@@ -152,6 +185,29 @@ const Graph = () => {
         position={hoveredNodePosition}
       />
       <div ref={networkCanvasRef} className={styles.graph}/>
+      <div style={{height: graphControlsHeight}} className={styles.graphControls}>
+        <button
+          onClick={zoomIn}
+          className={classes(styles.controlBtn, 'mr-1')}
+        >
+          <PlusIcon/>
+        </button>
+        <button
+          onClick={zoomOut}
+          className={classes(styles.controlBtn, 'mr-4')}
+        >
+          <MinusIcon/>
+        </button>
+        <Typography
+          element={'span'}
+          fontSize={12}
+          color={EColor.GRAY_DARK}
+          className='font-weight-bold'
+          style={{minWidth: 50}}
+        >
+          {Math.round(graphScale * 100)}%
+        </Typography>
+      </div>
     </Fragment>
   )
 }

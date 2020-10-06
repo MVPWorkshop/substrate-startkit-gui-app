@@ -2,6 +2,7 @@
   flex-grow: 1;
   align-self: stretch;
   display: flex;
+  flex-direction: column;
 
   .dragAndDrop {
     z-index: 3;

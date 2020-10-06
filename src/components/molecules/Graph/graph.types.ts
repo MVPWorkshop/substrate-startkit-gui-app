@@ -36,3 +36,8 @@ export interface IGraphState {
     y: number;
   }
 }
+
+export interface IGraphProps {
+  width: number;
+  height: number;
+}
