@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    color: white;
 
     &:hover {
       background-color:map-get($colors, 'purple') ;

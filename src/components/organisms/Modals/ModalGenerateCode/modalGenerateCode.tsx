@@ -15,7 +15,6 @@ import { ReactComponent as WarningIcon } from '../../../../shared/assets/warning
 import { RootState } from '../../../../redux/redux.types';
 import { createLoadingSelector } from '../../../../redux/loading/loading.redux.reducer';
 import { EGeneratorReduxActions } from '../../../../redux/generator/generator.redux.types';
-import Loader from '../../../atoms/Loader/loader';
 import { BaseError } from '../../../../shared/utils/error.util';
 
 enum EGenerateCodeModalSteps {
@@ -57,30 +56,25 @@ const ModalGenerateCode: React.FC = () => {
             {/*  Deploy on Github*/}
             {/*</Typography>*/}
             <div className='mb-8'>
-              <button
+              <Button
                 className={styles.deployBtn}
+                loading={isGeneratingCode}
                 onClick={generateGithubCode}
               >
-                { isGeneratingCode ?
-                  <Loader/>
-                  :
-                  <Fragment>
-                    <div>
-                      <GithubIcon
-                        className={'mb-6'}
-                      />
-                    </div>
-                    <Typography
-                      className='fw-900'
-                      fontSize={12}
-                      textAlign={'center'}
-                      color={EColor.WHITE}
-                    >
-                      Deploy on Github
-                    </Typography>
-                  </Fragment>
-                }
-              </button>
+                <div>
+                  <GithubIcon
+                    className={'mb-6'}
+                  />
+                </div>
+                <Typography
+                  className='fw-900'
+                  fontSize={12}
+                  textAlign={'center'}
+                  color={EColor.WHITE}
+                >
+                  Deploy on Github
+                </Typography>
+              </Button>
             </div>
             { !isGeneratingCode &&
               <Button theme={'flat'} onClick={closeModal}>
