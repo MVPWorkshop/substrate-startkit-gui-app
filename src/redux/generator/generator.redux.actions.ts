@@ -83,6 +83,21 @@ export function removePalletFromGenerator(pallet: EPallets): Thunk<void> {
   }
 }
 
+export function addTemplateToGenerator(templateId: string): Thunk<Promise<void>> {
+  return async (dispatch, getState) => {
+    const template = getState().templates[templateId];
+
+    if (!template) {
+      return;
+    }
+
+    dispatch(resetGenerator());
+    template.dependencies.forEach(dependency => {
+      dispatch(addPalletToGenerator(dependency));
+    })
+  }
+}
+
 /**
  * @description Logs the user into Github and then calls backend to generate the code
  * @return Error | string If successful returns link to the repo, if errors returns that error

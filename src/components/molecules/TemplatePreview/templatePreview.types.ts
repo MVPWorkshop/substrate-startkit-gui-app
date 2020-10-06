@@ -2,4 +2,5 @@ import { ITemplateResponse } from '../../../services/templates/templatesService.
 
 export interface ITemplatePreviewProps {
   template: ITemplateResponse;
+  onCreateBlockchainClick: () => void;
 }

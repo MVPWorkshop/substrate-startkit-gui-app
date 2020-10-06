@@ -37,7 +37,10 @@ const SideBarTemplatesMenu: React.FC<ISidebarPalletsMenuProps> = (props) => {
 
       return shouldFilter ? null :
         <div className='mb-4' key={template.name}>
-          <TemplatePreview template={template} />
+          <TemplatePreview
+            template={template}
+            onCreateBlockchainClick={props.closeMenu}
+          />
         </div>
     })
   }

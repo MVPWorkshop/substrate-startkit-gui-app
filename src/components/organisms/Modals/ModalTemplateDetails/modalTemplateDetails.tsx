@@ -16,6 +16,7 @@ import Tab from '../../../atoms/Tab/tab';
 import TabPanel from '../../../atoms/TabPanel/tabPanel';
 import DependencyList from '../../../atoms/DependencyList/dependencyList';
 import Button from '../../../atoms/Button/button';
+import { addTemplateToGenerator } from '../../../../redux/generator/generator.redux.actions';
 
 enum ETabs {
   DESCRIPTION = 'DESCRIPTION',
@@ -45,10 +46,15 @@ const ModalTemplateDetails: React.FC = () => {
     dispatch(toggleTemplateDetailsModal(template.id, false));
   }
 
+  const onAddTemplateClick = () => {
+    dispatch(addTemplateToGenerator(template.id))
+    onHide()
+  }
+
   const createBlockchainButton = () => {
     return (
       <div className='d-flex justify-content-end'>
-        <Button theme={'outline-primary'}>
+        <Button theme={'outline-primary'} onClick={onAddTemplateClick}>
           <Typography fontSize={14} element={'span'}>
             Create blockchain
           </Typography>

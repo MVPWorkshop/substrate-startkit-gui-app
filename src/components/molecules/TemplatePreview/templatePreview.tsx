@@ -6,19 +6,25 @@ import { ITemplatePreviewProps } from './templatePreview.types';
 import Button from '../../atoms/Button/button';
 import { useDispatch } from 'react-redux';
 import { toggleTemplateDetailsModal } from '../../../redux/ui/ui.redux.actions';
+import { addTemplateToGenerator } from '../../../redux/generator/generator.redux.actions';
 
 const TemplatePreview: React.FC<ITemplatePreviewProps> = (props) => {
 
   const {
     id,
     description,
-    name
+    name,
   } = props.template;
 
   const dispatch = useDispatch();
 
   const openDetailsModal = () => {
     dispatch(toggleTemplateDetailsModal(id, true))
+  }
+
+  const onAddTemplateClick = () => {
+    dispatch(addTemplateToGenerator(id))
+    props.onCreateBlockchainClick();
   }
 
   return (
@@ -33,7 +39,10 @@ const TemplatePreview: React.FC<ITemplatePreviewProps> = (props) => {
         {description}
       </Typography>
       <div className='d-flex align-items-center'>
-        <Button theme={'outline-primary'}>
+        <Button
+          theme={'outline-primary'}
+          onClick={onAddTemplateClick}
+        >
           <span className='fs-12'>Create blockchain</span>
         </Button>
         <div className='flex-grow-1 d-flex justify-content-end'>
