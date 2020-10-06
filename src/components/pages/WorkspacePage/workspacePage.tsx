@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import styles from './workspacePage.module.scss';
 import PageLayout from '../../layouts/PageLayout/pageLayout';
 import Sidebar from '../../organisms/Sidebar/sidebar';
@@ -14,11 +14,10 @@ import config from '../../../shared/constants/config.constants';
 import Button from '../../atoms/Button/button';
 import { RootState } from '../../../redux/redux.types';
 import { EPallets } from '../../../shared/types/pallets.types';
-import { createLoadingSelector } from '../../../redux/loading/loading.redux.reducer';
-import { EGeneratorReduxActions } from '../../../redux/generator/generator.redux.types';
 import WorkspaceGraphContent from '../../organisms/WorkspaceGraphContent/workspaceGraphContent';
 import { toggleModal } from '../../../redux/ui/ui.redux.actions';
 import { EModalName } from '../../../redux/ui/ui.redux.types';
+import { resetGenerator } from '../../../redux/generator/generator.redux.actions';
 
 enum EWorkspaceContent {
   WELCOME_TEXT = 'WELCOME_TEXT',
@@ -35,11 +34,6 @@ const WorkspacePage = () => {
   const workspaceContentParentRef = useRef<HTMLDivElement>(null);
 
   const generatorDeps = useSelector<RootState, EPallets[]>(state => state.generator.dependencies);
-  const isGeneratingCode = useSelector<RootState, boolean>(
-    state => createLoadingSelector([
-      EGeneratorReduxActions.GENERATE_CODE
-    ])(state)
-  )
 
   const fetchData = () => {
     dispatch(fetchAllPallets());
@@ -93,16 +87,27 @@ const WorkspacePage = () => {
 
       <div className={styles.workspaceContent}>
         <div className='d-flex justify-content-end pb-1'>
-          {(currentContent === EWorkspaceContent.PALLET_GRAPH && generatorDeps.length) ?
-          <Button
-            onClick={() => dispatch(toggleModal(EModalName.GENERATE_CODE, true))}
-            theme='outline-tertiary'
-            loading={isGeneratingCode}
-          >
-            <Typography element={'span'} fontSize={14}>
-              Deploy Codebase
-            </Typography>
-          </Button> : null}
+          { (currentContent === EWorkspaceContent.PALLET_GRAPH && generatorDeps.length) ?
+            <Fragment>
+              <Button
+                onClick={() => dispatch(resetGenerator())}
+                theme='flat'
+                className={styles.resetButton}
+              >
+                <Typography element={'span'} fontSize={14}>
+                  Reset
+                </Typography>
+              </Button>
+              <Button
+                onClick={() => dispatch(toggleModal(EModalName.GENERATE_CODE, true))}
+                theme='outline-tertiary'
+              >
+                <Typography element={'span'} fontSize={14}>
+                  Deploy Codebase
+                </Typography>
+              </Button>
+            </Fragment> : null
+          }
         </div>
         <div className='flex-grow-1 d-flex align-items-center justify-content-center' ref={workspaceContentParentRef}>
           {renderWorkspaceContent()}

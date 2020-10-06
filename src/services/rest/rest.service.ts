@@ -1,9 +1,10 @@
 import { AxiosInstance } from 'axios';
-import apiClient from '../../shared/utils/api.util';
+import apiClient, { apiBaseUrl } from '../../shared/utils/api.util';
 import { ApiRequestParams } from './restService.types';
 
 class RestService {
   protected static readonly rest: AxiosInstance = apiClient;
+  public static readonly baseApiUrl = apiBaseUrl;
 
   protected static async get<T>(params: Omit<ApiRequestParams, 'data'>): Promise<T> {
     return this.rest.get(params.url, params.config) as unknown as T;

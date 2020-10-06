@@ -6,12 +6,17 @@ import styles from './modalGenerateCode.module.scss';
 import { ReactComponent as GithubIcon } from '../../../../shared/assets/github_icon.svg';
 import { EColor } from '../../../../shared/types/styles.types';
 import Button from '../../../atoms/Button/button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleModal } from '../../../../redux/ui/ui.redux.actions';
 import SuccessIcon from '../../../atoms/SuccessIcon/successIcon';
 import { ETypographyVariant } from '../../../atoms/Typography/typography.types';
-import { resetGenerator } from '../../../../redux/generator/generator.redux.actions';
+import { generateCode, resetGenerator } from '../../../../redux/generator/generator.redux.actions';
 import { ReactComponent as WarningIcon } from '../../../../shared/assets/warning_icon.svg';
+import { RootState } from '../../../../redux/redux.types';
+import { createLoadingSelector } from '../../../../redux/loading/loading.redux.reducer';
+import { EGeneratorReduxActions } from '../../../../redux/generator/generator.redux.types';
+import Loader from '../../../atoms/Loader/loader';
+import { BaseError } from '../../../../shared/utils/error.util';
 
 enum EGenerateCodeModalSteps {
   DEPLOY_TYPE = 'DEPLOY_TYPE',
@@ -23,6 +28,15 @@ const ModalGenerateCode: React.FC = () => {
 
   const dispatch = useDispatch();
   const [currentStep, setCurrentStep] = useState<EGenerateCodeModalSteps>(EGenerateCodeModalSteps.DEPLOY_TYPE);
+
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const [repositoryLink, setRepositoryLink] = useState<string | undefined>();
+
+  const isGeneratingCode = useSelector<RootState, boolean>(
+    state => createLoadingSelector([
+      EGeneratorReduxActions.GENERATE_CODE
+    ])(state)
+  )
 
   const renderContentByStep = () => {
     switch (currentStep) {
@@ -43,27 +57,38 @@ const ModalGenerateCode: React.FC = () => {
             {/*  Deploy on Github*/}
             {/*</Typography>*/}
             <div className='mb-8'>
-              <button className={styles.deployBtn}>
-                <div>
-                  <GithubIcon
-                    className={'mb-6'}
-                  />
-                </div>
-                <Typography
-                  className='fw-900'
-                  fontSize={12}
-                  textAlign={'center'}
-                  color={EColor.WHITE}
-                >
-                  Deploy on Github
-                </Typography>
+              <button
+                className={styles.deployBtn}
+                onClick={generateGithubCode}
+              >
+                { isGeneratingCode ?
+                  <Loader/>
+                  :
+                  <Fragment>
+                    <div>
+                      <GithubIcon
+                        className={'mb-6'}
+                      />
+                    </div>
+                    <Typography
+                      className='fw-900'
+                      fontSize={12}
+                      textAlign={'center'}
+                      color={EColor.WHITE}
+                    >
+                      Deploy on Github
+                    </Typography>
+                  </Fragment>
+                }
               </button>
             </div>
-            <Button theme={'flat'} onClick={closeModal}>
-              <Typography element={'span'} fontSize={14}>
-                Cancel
-              </Typography>
-            </Button>
+            { !isGeneratingCode &&
+              <Button theme={'flat'} onClick={closeModal}>
+                <Typography element={'span'} fontSize={14}>
+                  Cancel
+                </Typography>
+              </Button>
+            }
           </Fragment>
         )
       }
@@ -74,14 +99,32 @@ const ModalGenerateCode: React.FC = () => {
             <Typography textAlign={'center'} fontSize={24} className='fw-600'>
               Congratulations!
             </Typography>
-            <Typography textAlign={'center'} variant={ETypographyVariant.BODY} className='mb-11'>
+            <Typography textAlign={'center'} variant={ETypographyVariant.BODY}>
               You have successfully created a blockchain
             </Typography>
+            { repositoryLink &&
+              <Button
+                theme={'link'}
+                onClick={openGithubRepo}
+              >
+                Github repo
+              </Button>
+            }
             <Button
+              className='mt-11'
               theme={'outline-primary'}
               onClick={createNewBlockchain}
             >
               Create New Blockchain
+            </Button>
+            <Button
+              className='mt-4'
+              theme={'flat'}
+              onClick={closeModal}
+            >
+              <Typography element={'span'} fontSize={14}>
+                Close
+              </Typography>
             </Button>
           </Fragment>
         )
@@ -99,6 +142,12 @@ const ModalGenerateCode: React.FC = () => {
               variant={ETypographyVariant.BODY}
             >
               An error occurred while trying to deploy the codebase, do you want to try again?
+              { errorMessage &&
+                <Fragment>
+                  <br />
+                  <code> {errorMessage} </code>
+                </Fragment>
+              }
             </Typography>
             <Button
               theme={'outline-primary'}
@@ -120,6 +169,29 @@ const ModalGenerateCode: React.FC = () => {
 
   const onOpen = () => {
     setCurrentStep(EGenerateCodeModalSteps.DEPLOY_TYPE);
+    setRepositoryLink(undefined);
+    setErrorMessage(undefined);
+  }
+
+  const generateGithubCode = async () => {
+    const data = await dispatch(generateCode());
+
+    if (data instanceof Error) {
+      if (data instanceof BaseError) {
+        setErrorMessage(data.message);
+      }
+
+      setCurrentStep(EGenerateCodeModalSteps.ERROR);
+    } else {
+      setCurrentStep(EGenerateCodeModalSteps.SUCCESS);
+      setRepositoryLink(data as unknown as string);
+    }
+  }
+
+  const openGithubRepo = () => {
+    if (repositoryLink) {
+      window.open(repositoryLink, '_blank');
+    }
   }
 
   const createNewBlockchain = () => {
@@ -132,6 +204,7 @@ const ModalGenerateCode: React.FC = () => {
       dialogClassName={styles.modalGenerateCode}
       name={EModalName.GENERATE_CODE}
       onOpen={onOpen}
+      disableHide={isGeneratingCode}
     >
       <Modal.Body className={styles.body}>
         {renderContentByStep()}

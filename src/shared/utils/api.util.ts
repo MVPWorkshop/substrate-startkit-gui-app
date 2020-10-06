@@ -4,8 +4,9 @@ import { AuthenticationError, AuthorizationError, NotFoundError, RestError } fro
 import { EErrorTypes } from '../types/error.types';
 import { IApiResponse } from '../../services/rest/restService.types';
 
+export const apiBaseUrl = `${CONFIG.API_BASE_URL}/api/${CONFIG.API_VERSION}`;
 const axiosInstance = axios.create({
-  baseURL: `${CONFIG.API_BASE_URL}/api/${CONFIG.API_VERSION}`,
+  baseURL: apiBaseUrl,
   withCredentials: true
 });
 

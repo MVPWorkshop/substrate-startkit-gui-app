@@ -83,7 +83,11 @@ export function removePalletFromGenerator(pallet: EPallets): Thunk<void> {
   }
 }
 
-export function generateCode(): Thunk<Promise<void>> {
+/**
+ * @description Logs the user into Github and then calls backend to generate the code
+ * @return Error | string If successful returns link to the repo, if errors returns that error
+ */
+export function generateCode(): Thunk<Promise<Error | string>> {
   return async (dispatch, getState) => {
     try {
       dispatch(ActionUtil.requestAction(EGeneratorReduxActions.GENERATE_CODE));
@@ -93,13 +97,13 @@ export function generateCode(): Thunk<Promise<void>> {
         pallets: getState().generator.dependencies
       });
 
-      window.open(response.repository);
-
       dispatch(ActionUtil.successAction(EGeneratorReduxActions.GENERATE_CODE));
+
+      return response.repository;
 
     } catch (error) {
       dispatch(ActionUtil.errorAction(EGeneratorReduxActions.GENERATE_CODE));
-
+      return error;
     }
   }
 }

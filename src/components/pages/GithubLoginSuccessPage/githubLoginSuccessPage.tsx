@@ -5,7 +5,7 @@ import SuccessIcon from '../../atoms/SuccessIcon/successIcon';
 
 const GithubLoginSuccessPage = () => {
   return (
-    <div className='w-100 h-100 d-flex align-items-center justify-content-center flex-column'>
+    <div className='w-100 h-100 d-flex align-items-center justify-content-center flex-column p-4'>
       <SuccessIcon />
       <Typography variant={ETypographyVariant.TITLE}>
         Login successful!

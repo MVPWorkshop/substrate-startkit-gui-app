@@ -9,6 +9,7 @@
     width: $sidebarWidth;
     align-self: stretch;
     flex-shrink: 0;
+    z-index: 10;
   }
 
   .workspaceContent {
@@ -18,5 +19,13 @@
     display: flex;
     padding: 48px 48px 48px 0;
     flex-direction: column;
+  }
+
+  .resetButton {
+    margin-right: 36px;
+
+    &:hover, &:active, &:focus {
+      color: map-get($colors, 'pink')
+    }
   }
 }

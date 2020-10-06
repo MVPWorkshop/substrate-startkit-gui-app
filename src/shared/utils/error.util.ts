@@ -2,7 +2,7 @@ import { EErrorTypes, RestErrorType } from '../types/error.types';
 import { errorMessages } from '../constants/error.constants';
 import { IApiErrorResponse } from '../../services/rest/restService.types';
 
-class BaseError extends Error {
+export class BaseError extends Error {
   public type: EErrorTypes;
 
   constructor(errorType: EErrorTypes, message?: string) {
@@ -51,5 +51,11 @@ export class AuthenticationError extends RestError {
 export class UnknownError extends BaseError {
   constructor() {
     super(EErrorTypes.UNKNOWN_ERROR);
+  }
+}
+
+export class GithubLoginError extends BaseError {
+  constructor() {
+    super(EErrorTypes.GITHUB_LOGIN_ERROR);
   }
 }
