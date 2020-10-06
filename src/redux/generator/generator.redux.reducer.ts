@@ -24,6 +24,11 @@ const generatorReduxReducer: Reducer<GeneratorReduxReducerState, GeneratorReduxA
         dependencies: removeDuplicates(state.dependencies, action.payload.pallets)
       }
     }
+    case EGeneratorReduxActions.RESET_GENERATOR: {
+      return {
+        ...initialState
+      }
+    }
     default: {
       return state;
     }

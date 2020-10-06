@@ -14,10 +14,11 @@ import config from '../../../shared/constants/config.constants';
 import Button from '../../atoms/Button/button';
 import { RootState } from '../../../redux/redux.types';
 import { EPallets } from '../../../shared/types/pallets.types';
-import { generateCode } from '../../../redux/generator/generator.redux.actions';
 import { createLoadingSelector } from '../../../redux/loading/loading.redux.reducer';
 import { EGeneratorReduxActions } from '../../../redux/generator/generator.redux.types';
 import WorkspaceGraphContent from '../../organisms/WorkspaceGraphContent/workspaceGraphContent';
+import { toggleModal } from '../../../redux/ui/ui.redux.actions';
+import { EModalName } from '../../../redux/ui/ui.redux.types';
 
 enum EWorkspaceContent {
   WELCOME_TEXT = 'WELCOME_TEXT',
@@ -93,8 +94,14 @@ const WorkspacePage = () => {
       <div className={styles.workspaceContent}>
         <div className='d-flex justify-content-end pb-1'>
           {(currentContent === EWorkspaceContent.PALLET_GRAPH && generatorDeps.length) ?
-          <Button onClick={() => dispatch(generateCode())} theme='outline-tertiary' loading={isGeneratingCode}>
-            Deploy Codebase
+          <Button
+            onClick={() => dispatch(toggleModal(EModalName.GENERATE_CODE, true))}
+            theme='outline-tertiary'
+            loading={isGeneratingCode}
+          >
+            <Typography element={'span'} fontSize={14}>
+              Deploy Codebase
+            </Typography>
           </Button> : null}
         </div>
         <div className='flex-grow-1 d-flex align-items-center justify-content-center' ref={workspaceContentParentRef}>

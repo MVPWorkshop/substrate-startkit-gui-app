@@ -3,6 +3,7 @@ import ModelPalletDetails from './ModalPalletDetails/modalPalletDetails';
 import ModalTemplateDetails from './ModalTemplateDetails/modalTemplateDetails';
 import ModalAddNewDependency from './ModalAddNewDependency/modalAddNewDependency';
 import ModalRemoveDependency from './ModalRemoveDependency/modalRemoveDependency';
+import ModalGenerateCode from './ModalGenerateCode/modalGenerateCode';
 
 export const Modals = () => {
   return (
@@ -11,6 +12,7 @@ export const Modals = () => {
       <ModalTemplateDetails />
       <ModalAddNewDependency />
       <ModalRemoveDependency />
+      <ModalGenerateCode />
     </Fragment>
   )
 }

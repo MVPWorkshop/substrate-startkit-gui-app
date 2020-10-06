@@ -1,5 +1,10 @@
 import { EPallets } from '../../shared/types/pallets.types';
-import { AddGeneratorDependencies, EGeneratorReduxActions, RemoveGeneratorDependencies } from './generator.redux.types';
+import {
+  AddGeneratorDependencies,
+  EGeneratorReduxActions,
+  RemoveGeneratorDependencies,
+  ResetGenerator
+} from './generator.redux.types';
 import { Thunk } from '../redux.types';
 import AuthService from '../../services/auth/auth.service';
 import GeneratorService from '../../services/generator/generator.service';
@@ -21,6 +26,13 @@ export function removeGeneratorDependencies(pallets: EPallets[]): RemoveGenerato
     payload: {
       pallets
     }
+  }
+}
+
+export function resetGenerator(): ResetGenerator {
+  return {
+    type: EGeneratorReduxActions.RESET_GENERATOR,
+    payload: {}
   }
 }
 

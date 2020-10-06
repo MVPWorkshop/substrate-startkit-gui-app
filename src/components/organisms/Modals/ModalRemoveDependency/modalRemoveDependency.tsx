@@ -16,6 +16,7 @@ import DependencyList from '../../../atoms/DependencyList/dependencyList';
 import { EPallets } from '../../../../shared/types/pallets.types';
 import { recursivelyFindPalletDependencies } from '../../../../shared/utils/generator.util';
 import { keepDuplicates } from '../../../../shared/utils/common.util';
+import { ETypographyVariant } from '../../../atoms/Typography/typography.types';
 
 enum ERemoveDependencyModalSteps {
   DEPENDENCY_DETAILS = 'DEPENDENCY_DETAILS',
@@ -91,8 +92,7 @@ const ModalRemoveDependency: React.FC = () => {
             <Typography
               className={'mb-14'}
               textAlign={'center'}
-              fontSize={14}
-              color={EColor.GRAY_LIGHTER}
+              variant={ETypographyVariant.BODY}
             >
               Are you sure you want to continue?
             </Typography>
