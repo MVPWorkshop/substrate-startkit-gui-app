@@ -34,7 +34,7 @@ const Sidebar: React.FC<ISidebarProps> = (props) => {
       onMenuChange(selectedMenu)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedMenu, onMenuChange])
+  }, [selectedMenu])
 
   useEffect(() => {
     setIsFirstMount(false);

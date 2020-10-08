@@ -50,11 +50,6 @@ export function addPalletToGenerator(pallet: EPallets): Thunk<void> {
       dependencyType: 'using'
     })
 
-    console.log([
-      ...depsToAdd,
-      pallet
-    ])
-
     dispatch(addGeneratorDependencies([
       ...depsToAdd,
       pallet

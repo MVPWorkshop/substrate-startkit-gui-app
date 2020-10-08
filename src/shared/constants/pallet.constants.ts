@@ -24,5 +24,8 @@ export const palletsIncludedInNodeTemplate: EPallets[] = [
   EPallets.PALLET_BALANCE,
   EPallets.PALLET_AURA,
   EPallets.PALLET_GRANDPA,
-  EPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP
+  EPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP,
+  EPallets.PALLET_SUDO,
+  EPallets.PALLET_TIMESTAMP,
+  EPallets.PALLET_TRANSACTION_PAYMENT
 ]

@@ -4,7 +4,10 @@ export enum EPallets {
   PALLET_NICKS = 'pallet-nicks',
   PALLET_AURA = 'pallet-aura',
   PALLET_GRANDPA = 'pallet-grandpa',
-  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip'
+  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip',
+  PALLET_SUDO = 'pallet-sudo',
+  PALLET_TIMESTAMP = 'pallet-timestamp',
+  PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment'
 }
 
 export enum EPalletCategories {
