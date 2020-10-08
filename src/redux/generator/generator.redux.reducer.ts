@@ -1,12 +1,11 @@
 import { EGeneratorReduxActions, GeneratorReduxActions, GeneratorReduxReducerState } from './generator.redux.types';
-import { EPallets } from '../../shared/types/pallets.types';
 import { Reducer } from 'redux';
 import { mergeArraysWithNoDuplicates, removeDuplicates } from '../../shared/utils/common.util';
+import { palletsIncludedInNodeTemplate } from '../../shared/constants/pallet.constants';
 
 const initialState: GeneratorReduxReducerState = {
   dependencies: [
-    EPallets.PALLET_CONTRACT,
-    EPallets.PALLET_BALANCE
+    ...palletsIncludedInNodeTemplate
   ]
 }
 

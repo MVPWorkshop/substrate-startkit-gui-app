@@ -1,5 +1,5 @@
 import { AllKeysRequired, DynamicObject } from '../types/util.types';
-import { ECommonAuthors, EPalletCategories, ESubstrateVersion } from '../types/pallets.types';
+import { ECommonAuthors, EPalletCategories, EPallets, ESubstrateVersion } from '../types/pallets.types';
 
 export const palletCategoryLabels: DynamicObject<string, EPalletCategories, AllKeysRequired> = {
   [EPalletCategories.ACCOUNTS]: 'Accounts',
@@ -19,3 +19,10 @@ export const substrateVersionLabels: DynamicObject<string, ESubstrateVersion, Al
 export const commonAuthorsLabels: DynamicObject<string, ECommonAuthors | string, AllKeysRequired> = {
   [ECommonAuthors.PARITY_TECHNOLOGIES]: 'Parity Technologies'
 }
+
+export const palletsIncludedInNodeTemplate: EPallets[] = [
+  EPallets.PALLET_BALANCE,
+  EPallets.PALLET_AURA,
+  EPallets.PALLET_GRANDPA,
+  EPallets.PALLET_RANDOMNESS_COLLECTIVE_FLIP
+]

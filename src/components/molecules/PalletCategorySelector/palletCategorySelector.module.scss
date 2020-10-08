@@ -10,12 +10,10 @@
     font-size: 13px;
     margin-right: 8px;
     margin-bottom: 8px;
-    padding: 7px 14px;
+    padding: 2px 14px;
     height: 28px;
     border: 1.6px solid map-get($colors, 'grayDarker');
     display: flex;
-    align-items: center;
-    justify-content: center;
     color: map-get($colors, 'grayDark');
     box-sizing: border-box;
 
@@ -30,7 +28,6 @@
       border-image-slice: 1;
       -webkit-background-clip: text;
       -webkit-text-fill-color: map-get($colors, 'white');
-      border-color: transparent;
     }
   }
 }

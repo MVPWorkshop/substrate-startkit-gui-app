@@ -2,7 +2,7 @@
 
 .requestLinkBox {
   text-transform: unset;
-  border: 2px solid transparent;
+  border: 2px solid;
   border-image: map-get($accents, 'accentPrimary');
   border-image-slice: 1;
 

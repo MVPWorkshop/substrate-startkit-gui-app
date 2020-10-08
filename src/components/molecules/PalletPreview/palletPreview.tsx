@@ -41,7 +41,7 @@ const PalletPreview: React.FC<IPalletPreviewProps> = (props) => {
       </Typography>
       <div className='d-flex justify-content-center'>
         <Typography fontSize={12} className='mr-2' element={'span'}>
-          {`${byteToKb(size)}kB`}
+          {`${byteToKb(size).toFixed(2)}kB`}
         </Typography>
         <Separator vertical={true} className='mr-2' />
         <Typography fontSize={12} className='mr-2' element={'span'}>
@@ -53,7 +53,9 @@ const PalletPreview: React.FC<IPalletPreviewProps> = (props) => {
             className={styles.detailsBtn}
             onClick={openDetailsModal}
           >
-            <span className='fs-12'>View Details</span>
+            <Typography fontSize={12} element={'span'}>
+              View Details
+            </Typography>
           </Button>
         </div>
       </div>

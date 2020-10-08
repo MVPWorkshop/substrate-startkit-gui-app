@@ -39,6 +39,13 @@ const ModalPalletDetails: React.FC = () => {
   const dispatch = useDispatch();
 
   const pallet = useSelector<RootState, IPalletResponse | undefined>(getCurrentlySelectedPallet);
+  const isPalletAdded = useSelector<RootState, boolean>(state => {
+    if (!pallet) {
+      return false;
+    }
+
+    return state.generator.dependencies.includes(pallet.name)
+  })
 
   if (!pallet) {
     return null;
@@ -56,9 +63,13 @@ const ModalPalletDetails: React.FC = () => {
   const addPalletButton = () => {
     return (
       <div className='d-flex justify-content-end'>
-        <Button theme={'outline-primary'} onClick={addPalletClick}>
+        <Button
+          theme={'outline-primary'}
+          onClick={addPalletClick}
+          disabled={isPalletAdded}
+        >
           <Typography fontSize={14} element={'span'}>
-            Add pallet
+            {isPalletAdded ? 'Added' : 'Add pallet'}
           </Typography>
         </Button>
       </div>
@@ -88,7 +99,7 @@ const ModalPalletDetails: React.FC = () => {
                       {moment(pallet.updated).fromNow()}
                     </Typography>
                     <Typography className='mb-0' fontSize={14}>
-                      {byteToKb(pallet.size)}kB
+                      {byteToKb(pallet.size).toFixed(2)}kB
                     </Typography>
                     <Typography className='mb-0' fontSize={14}>
                       {pallet.downloads}

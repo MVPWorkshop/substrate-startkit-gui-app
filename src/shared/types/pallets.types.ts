@@ -1,6 +1,10 @@
 export enum EPallets {
   PALLET_BALANCE = 'pallet-balances',
-  PALLET_CONTRACT = 'pallet-contracts'
+  PALLET_CONTRACT = 'pallet-contracts',
+  PALLET_NICKS = 'pallet-nicks',
+  PALLET_AURA = 'pallet-aura',
+  PALLET_GRANDPA = 'pallet-grandpa',
+  PALLET_RANDOMNESS_COLLECTIVE_FLIP = 'pallet-randomness-collective-flip'
 }
 
 export enum EPalletCategories {

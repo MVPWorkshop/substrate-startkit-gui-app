@@ -4,6 +4,7 @@ import { palletCategoryLabels } from '../../../shared/constants/pallet.constants
 import styles from './palletCategorySelector.module.scss';
 import { IPalletCategorySelectorProps } from './palletCategorySelector.types';
 import { classes } from '../../../shared/utils/styles.util';
+import Typography from '../../atoms/Typography/typography';
 
 interface ISelection {
   label: string;
@@ -48,7 +49,9 @@ const PalletCategorySelector: React.FC<IPalletCategorySelectorProps> = (props) =
         onClick={() => props.onChange(category.value)}
         key={category.label}
       >
-        {category.label}
+        <Typography element={'span'}>
+          {category.label}
+        </Typography>
       </button>
     )
   }

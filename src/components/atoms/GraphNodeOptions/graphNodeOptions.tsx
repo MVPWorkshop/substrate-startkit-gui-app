@@ -8,6 +8,7 @@ import { classes } from '../../../shared/utils/styles.util';
 import { useDispatch } from 'react-redux';
 import { setSelectedPallet, toggleModal } from '../../../redux/ui/ui.redux.actions';
 import { EModalName } from '../../../redux/ui/ui.redux.types';
+import { palletsIncludedInNodeTemplate } from '../../../shared/constants/pallet.constants';
 
 const GraphNodeOptions: React.FC<IGraphNodeOptionsProps> = (props) => {
 
@@ -43,6 +44,8 @@ const GraphNodeOptions: React.FC<IGraphNodeOptionsProps> = (props) => {
     dispatch(toggleModal(modalName, true));
   }
 
+  const isDeleteDisabled = palletsIncludedInNodeTemplate.includes(nodeId);
+
   return (
     <div
       key={nodeId}
@@ -58,19 +61,21 @@ const GraphNodeOptions: React.FC<IGraphNodeOptionsProps> = (props) => {
           className={classes(styles.optionButton)}
           style={{
             ...btnCalculatedStyles,
-            marginRight: 16 * scale
+            marginRight: isDeleteDisabled ? 0 : (16 * scale)
           }}
           onClick={openPalletRelatedModal(EModalName.PALLET_DETAILS)}
         >
           <IconInfoSvg width='100%' height='100%'/>
         </button>
-        <button
-          className={classes(styles.optionButton)}
-          style={btnCalculatedStyles}
-          onClick={openPalletRelatedModal(EModalName.REMOVE_DEPENDENCY)}
-        >
-          <IconTrashSvg width='100%' height='100%'/>
-        </button>
+        { !isDeleteDisabled ?
+          <button
+            className={classes(styles.optionButton)}
+            style={btnCalculatedStyles}
+            onClick={openPalletRelatedModal(EModalName.REMOVE_DEPENDENCY)}
+          >
+            <IconTrashSvg width='100%' height='100%'/>
+          </button> : null
+        }
       </div>
     </div>
   )

@@ -25,40 +25,59 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
   border: none;
   color: $white;
 
-  &:hover, &:active, &:focus  {
-    color: $black;
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $black;
+    }
   }
 }
 
 .btn-outline-primary {
   text-transform: unset;
-  background: $primaryButtonGradientColor;
-  border: 2px solid transparent;
+  background-image: $primaryButtonGradientColor;
+  border: 2px solid;
   border-image: $primaryButtonGradientColor;
   border-image-slice: 1;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 
+  span {
+    background: $primaryButtonGradientColor;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &:not(.disabledElement) {
     &:hover, &:active, &:focus {
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: $white;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: $white;
+
+      span {
+        background: $white;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 }
 
 .btn-secondary {
   @include button-variant($secondaryButtonColor, $secondaryButtonColor);
 
-  &:active, &:focus, &:hover {
-    color: $black;
+  &:not(.disabledElement) {
+    &:active, &:focus, &:hover {
+      color: $black;
+    }
   }
 }
 
 .btn-outline-secondary {
   @include button-outline-variant($secondaryButtonColor);
 
-  &:hover, &:active, &:focus {
-    color: $white;
-    background-color: $secondaryButtonColor;
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $white;
+      background-color: $secondaryButtonColor;
+    }
   }
 }
 
@@ -66,8 +85,10 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
   background: none;
   @include button-variant($tertiaryButtonColor, $tertiaryButtonColor);
 
-  &:hover, &:active, &:focus {
-    color: $white;
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $white;
+    }
   }
 }
 
@@ -77,19 +98,23 @@ $tertiaryButtonColor: map-get($accents, 'accentTertiary');
   border-width: 1px;
   @include button-outline-variant($tertiaryButtonColor, $tertiaryButtonColor);
 
-  &:hover, &:active, &:focus {
-    background-color: $tertiaryButtonColor;
-    border-color: $tertiaryButtonColor;
-    color: $black;
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      background-color: $tertiaryButtonColor;
+      border-color: $tertiaryButtonColor;
+      color: $black;
+    }
   }
 }
 
 .btn-flat {
   background: none;
 
-  &:hover, &:active, &:focus {
-    background: none;
-    color: $primaryButtonColor
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      background: none;
+      color: $primaryButtonColor
+    }
   }
 }
 

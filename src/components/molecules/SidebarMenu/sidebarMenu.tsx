@@ -25,17 +25,19 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = (props) => {
   // }, [props]);
 
   return (
-    <div
-      className={styles.sidebarMenu}
-      style={props.style}
-      ref={menuRef}
-    >
-      {props.loading ?
-        <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
-          <Loader />
-        </div> :
-        props.children
-      }
+    <div className={styles.sidebarAbsoluteContainer}>
+      <div
+        className={styles.sidebarMenu}
+        style={props.style}
+        ref={menuRef}
+      >
+        {props.loading ?
+          <div className='h-100 w-100 d-flex align-items-center justify-content-center'>
+            <Loader />
+          </div> :
+          props.children
+        }
+      </div>
     </div>
   )
 }

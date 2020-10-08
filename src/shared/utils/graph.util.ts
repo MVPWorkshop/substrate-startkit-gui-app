@@ -13,7 +13,15 @@ const nodeRenderer: INodeRenderer = ({ctx, label, x, y}) => {
     ctx.textAlign="center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(label, x,y+(nodeHeight / 2));
+
+    let computedLabel = '';
+    if (label.length > 16) {
+      computedLabel = label.slice(0, 14) + '...';
+    } else {
+      computedLabel = label;
+    }
+
+    ctx.fillText(computedLabel, x,y+(nodeHeight / 2));
   }
 
   return {
@@ -69,7 +77,7 @@ export const graphOptions: GraphOptions = {
   layout: {
     hierarchical: {
       enabled: true,
-      direction: 'UD',
+      direction: 'DU',
       levelSeparation: 300,
       sortMethod: 'directed',
       nodeSpacing: 200,

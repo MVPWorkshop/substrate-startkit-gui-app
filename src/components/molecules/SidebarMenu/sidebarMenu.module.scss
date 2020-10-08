@@ -1,14 +1,18 @@
 @import '../../../shared/styles/variables';
 
-.sidebarMenu {
+.sidebarAbsoluteContainer {
   position: absolute;
   top: 0;
   left: $sidebarWidth;
-  background-color: map-get($colors, 'grayHighlight');
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 36px 16px 84px 16px;
   height: 100%;
-  width: $sidebarMenuWidth;
-  z-index: 5;
+
+  .sidebarMenu {
+    background-color: map-get($colors, 'grayHighlight');
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 36px 16px 84px 16px;
+    height: 100%;
+    width: $sidebarMenuWidth;
+    z-index: 5;
+  }
 }
