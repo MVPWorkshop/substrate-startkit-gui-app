@@ -168,7 +168,7 @@ const Graph: React.FC<IGraphProps> = (props) => {
   useEffect(() => {
     if (network) {
       network.setData(graphData);
-      setGraphScale(1);
+      setGraphScale(network.getScale() || 1);
       setHoveredNodeId(undefined);
       setHoveredNodePosition(undefined);
       network.redraw();

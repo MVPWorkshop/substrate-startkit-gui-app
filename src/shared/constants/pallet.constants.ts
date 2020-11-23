@@ -8,7 +8,8 @@ export const palletCategoryLabels: DynamicObject<string, EPalletCategories, AllK
   [EPalletCategories.GOVERNANCE]: 'Governance',
   [EPalletCategories.IDENTITY]: 'Identity',
   [EPalletCategories.RUNTIME]: 'Runtime',
-  [EPalletCategories.SMART_CONTRACTS]: 'Smart Contracts'
+  [EPalletCategories.SMART_CONTRACTS]: 'Smart Contracts',
+  [EPalletCategories.OTHER]: 'Other'
 }
 
 export const substrateVersionLabels: DynamicObject<string, ESubstrateVersion, AllKeysRequired> = {
@@ -17,7 +18,8 @@ export const substrateVersionLabels: DynamicObject<string, ESubstrateVersion, Al
 }
 
 export const commonAuthorsLabels: DynamicObject<string, ECommonAuthors | string, AllKeysRequired> = {
-  [ECommonAuthors.PARITY_TECHNOLOGIES]: 'Parity Technologies'
+  [ECommonAuthors.PARITY_TECHNOLOGIES]: 'Parity Technologies',
+  [ECommonAuthors.CENTRALITY_DEVELOPERS]: 'Centrality Developers'
 }
 
 export const palletsIncludedInNodeTemplate: EPallets[] = [

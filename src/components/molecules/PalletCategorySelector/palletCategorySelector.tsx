@@ -11,31 +11,44 @@ interface ISelection {
   value: EPalletCategories | undefined;
 }
 
-const palletCategories: ISelection[] = [{
-  value: undefined,
-  label: 'View all'
-},{
-  label: palletCategoryLabels['ACCOUNTS'],
-  value: EPalletCategories.ACCOUNTS
-},{
-  label: palletCategoryLabels['ASSETS'],
-  value: EPalletCategories.ASSETS
-},{
-  label: palletCategoryLabels['CONSENSUS'],
-  value: EPalletCategories.CONSENSUS
-},{
-  label: palletCategoryLabels['GOVERNANCE'],
-  value: EPalletCategories.GOVERNANCE
-},{
-  label: palletCategoryLabels['IDENTITY'],
-  value: EPalletCategories.IDENTITY
-},{
-  label: palletCategoryLabels['RUNTIME'],
-  value: EPalletCategories.RUNTIME
-},{
-  label: palletCategoryLabels['SMART_CONTRACTS'],
-  value: EPalletCategories.SMART_CONTRACTS
-},]
+const palletCategories: ISelection[] = [
+  {
+    value: undefined,
+    label: 'View all'
+  },
+  {
+    label: palletCategoryLabels['ACCOUNTS'],
+    value: EPalletCategories.ACCOUNTS
+  },
+  {
+    label: palletCategoryLabels['ASSETS'],
+    value: EPalletCategories.ASSETS
+  },
+  {
+    label: palletCategoryLabels['CONSENSUS'],
+    value: EPalletCategories.CONSENSUS
+  },
+  {
+    label: palletCategoryLabels['GOVERNANCE'],
+    value: EPalletCategories.GOVERNANCE
+  },
+  {
+    label: palletCategoryLabels['IDENTITY'],
+    value: EPalletCategories.IDENTITY
+  },
+  {
+    label: palletCategoryLabels['RUNTIME'],
+    value: EPalletCategories.RUNTIME
+  },
+  {
+    label: palletCategoryLabels['SMART_CONTRACTS'],
+    value: EPalletCategories.SMART_CONTRACTS
+  },
+  {
+    label: palletCategoryLabels['OTHER'],
+    value: EPalletCategories.OTHER
+  }
+]
 
 const PalletCategorySelector: React.FC<IPalletCategorySelectorProps> = (props) => {
 

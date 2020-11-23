@@ -77,10 +77,11 @@ export const graphOptions: GraphOptions = {
   layout: {
     hierarchical: {
       enabled: true,
-      direction: 'DU',
-      levelSeparation: 300,
+      direction: 'UD',
+      levelSeparation: 150,
       sortMethod: 'directed',
       nodeSpacing: 200,
+      edgeMinimization: false
     }
   },
   physics: {

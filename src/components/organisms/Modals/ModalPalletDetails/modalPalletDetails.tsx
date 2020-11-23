@@ -115,7 +115,7 @@ const ModalPalletDetails: React.FC = () => {
                 head='Authors'
                 body={pallet.authors.map(author => (
                   <Typography className='mb-0' fontSize={14} key={author}>
-                    {commonAuthorsLabels[author]}
+                    {commonAuthorsLabels[author] || author}
                   </Typography>
                 ))}
               />

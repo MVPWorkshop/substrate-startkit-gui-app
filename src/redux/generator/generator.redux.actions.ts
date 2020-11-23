@@ -51,8 +51,7 @@ export function addPalletToGenerator(pallet: EPallets): Thunk<void> {
     })
 
     dispatch(addGeneratorDependencies([
-      ...depsToAdd,
-      pallet
+      ...depsToAdd
     ]));
   }
 }
@@ -72,8 +71,7 @@ export function removePalletFromGenerator(pallet: EPallets): Thunk<void> {
     })
 
     dispatch(removeGeneratorDependencies([
-      ...depsToRemove,
-      pallet
+      ...depsToRemove
     ]));
   }
 }
