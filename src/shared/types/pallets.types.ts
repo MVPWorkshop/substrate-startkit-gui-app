@@ -8,7 +8,6 @@ export enum EPallets {
   PALLET_SUDO = 'pallet-sudo',
   PALLET_TIMESTAMP = 'pallet-timestamp',
   PALLET_TRANSACTION_PAYMENT = 'pallet-transaction-payment',
-  PALLET_GENERIC_ASSET = 'pallet-generic-asset',
   PALLET_RECOVERY = 'pallet-recovery',
   PALLET_VESTING = 'pallet-vesting',
   PALLET_SESSION = 'pallet-session',
@@ -21,7 +20,6 @@ export enum EPallets {
   PALLET_IM_ONLINE = 'pallet-im-online',
   PALLET_ATOMIC_SWAP = 'pallet-atomic-swap',
   PALLET_STAKING = 'pallet-staking',
-  PALLET_BENCHMARK = 'pallet-benchmark',
   PALLET_MULTISIG = 'pallet-multisig',
   PALLET_UTILITY = 'pallet-utility',
   PALLET_INDICES = 'pallet-indices',
@@ -36,7 +34,13 @@ export enum EPallets {
   PALLET_SOCIETY = 'pallet-society',
   PALLET_SCORED_POOL = 'pallet-scored-pool',
   PALLET_EVM = 'pallet-evm',
-  PALLET_PROXY = 'pallet-proxy'
+  PALLET_PROXY = 'pallet-proxy',
+  PALLET_DID = 'pallet-did',
+  PALLET_REGISTRAR = 'pallet-registrar',
+  PALLET_PRODUCT_REGISTRY = 'pallet-product-registry',
+  PALLET_PRODUCT_TRACKING = 'pallet-product-tracking',
+  PALLET_RBAC = 'substrate-rbac',
+  PALLET_VALIDATOR_SET = 'substrate-validator-set'
 }
 
 export enum EPalletCategories {
@@ -52,7 +56,8 @@ export enum EPalletCategories {
 
 export enum ECommonAuthors {
   PARITY_TECHNOLOGIES = 'PARITY_TECHNOLOGIES',
-  CENTRALITY_DEVELOPERS = 'CENTRALITY_DEVELOPERS'
+  CENTRALITY_DEVELOPERS = 'CENTRALITY_DEVELOPERS',
+  SUBSTRATE_DEV_HUB = 'SUBSTRATE_DEV_HUB'
 }
 
 export enum ESubstrateVersion {

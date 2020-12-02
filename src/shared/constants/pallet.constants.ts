@@ -19,7 +19,8 @@ export const substrateVersionLabels: DynamicObject<string, ESubstrateVersion, Al
 
 export const commonAuthorsLabels: DynamicObject<string, ECommonAuthors | string, AllKeysRequired> = {
   [ECommonAuthors.PARITY_TECHNOLOGIES]: 'Parity Technologies',
-  [ECommonAuthors.CENTRALITY_DEVELOPERS]: 'Centrality Developers'
+  [ECommonAuthors.CENTRALITY_DEVELOPERS]: 'Centrality Developers',
+  [ECommonAuthors.SUBSTRATE_DEV_HUB]: 'Substrate Developer Hub'
 }
 
 export const palletsIncludedInNodeTemplate: EPallets[] = [

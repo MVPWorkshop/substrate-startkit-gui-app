@@ -78,9 +78,9 @@ export const graphOptions: GraphOptions = {
     hierarchical: {
       enabled: true,
       direction: 'UD',
-      levelSeparation: 150,
+      levelSeparation: 250,
       sortMethod: 'directed',
-      nodeSpacing: 200,
+      nodeSpacing: 300,
       edgeMinimization: false
     }
   },
