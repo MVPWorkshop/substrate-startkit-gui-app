@@ -1,0 +1,8 @@
+version: "3"
+services:
+  app_frontend:
+    container_name: "app_frontend"
+    build: .
+    ports:
+      - "3000:3000"
+    entrypoint: "./docker-entrypoint.sh"
