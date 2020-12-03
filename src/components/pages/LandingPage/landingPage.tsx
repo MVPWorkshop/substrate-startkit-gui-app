@@ -31,7 +31,7 @@ const LandingPage = () => {
             element='span'
             className='font-weight-bolder'
           >
-            Substrate Starter Kit
+            Substrate Blockchain Starter Kit
           </Typography>
         </Typography>
         <span

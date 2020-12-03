@@ -23,7 +23,7 @@ const WorkspaceWelcomeContent: React.FC<IWorkspaceWelcomeContentProps> = (props)
           fontSize={18}
           className='text-center'
         >
-          Substrate StarterKit allows you to create a blockchain based on custom logic simply by drag and dropping pallets.
+          Substrate Blockchain Starter Kit allows you to create a blockchain based on custom logic simply by drag and dropping pallets.
           Created blockchain codebase will be deployed to your Github account.
         </Typography>
       </div>
