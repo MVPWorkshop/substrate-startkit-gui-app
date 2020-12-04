@@ -40,6 +40,7 @@ export function recursivelyFindPalletDependencies(params: {
   }
 
   findPalletDependency(params.palletName);
+  dependenciesMap.delete(params.palletName);
 
   return Array.from(dependenciesMap.keys());
 }
