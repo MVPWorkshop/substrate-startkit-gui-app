@@ -7,7 +7,7 @@ export interface IPalletResponse {
   packageName: string;
   version: string;
   license: string;
-  updated: Date;
+  updated: string;
   description: string;
   shortDescription: string;
   compatibility: ESubstrateVersion;
