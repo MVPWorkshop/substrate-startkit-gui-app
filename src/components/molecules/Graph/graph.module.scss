@@ -1,0 +1,24 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/mixins";
+
+.graph {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.graphControls {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4px;
+
+  .controlBtn {
+    @include removeButtonDefaultStyles;
+
+    width: 36px;
+    height: 100%;
+    background-color: map-get($colors, 'grayDarkest');
+  }
+}

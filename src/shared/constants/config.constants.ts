@@ -1,7 +1,22 @@
 const {
-  REACT_APP_API_BASE_URL
+  REACT_APP_API_BASE_URL,
+  REACT_APP_API_VERSION,
+  REACT_APP_FEATURE_REQUEST_MAIL
 } = process.env;
 
-export default {
-  API_BASE_URL: REACT_APP_API_BASE_URL
+if (!REACT_APP_API_BASE_URL || !REACT_APP_API_VERSION) {
+  throw new Error("Please provide API data in .env config!")
 }
+
+if (!REACT_APP_FEATURE_REQUEST_MAIL) {
+  throw new Error("Please provide the email address used for feature requests")
+}
+
+const config = {
+  API_BASE_URL: REACT_APP_API_BASE_URL,
+  API_VERSION: REACT_APP_API_VERSION,
+  FEATURE_REQUEST_MAIL: REACT_APP_FEATURE_REQUEST_MAIL,
+  APP_VERSION: '1.0.0'
+}
+
+export default  config;

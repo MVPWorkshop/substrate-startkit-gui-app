@@ -1,0 +1,33 @@
+@import '../../../shared/styles/variables';
+@import '../../../shared/styles/mixins';
+
+.palletCategorySelector {
+  display: flex;
+  flex-wrap: wrap;
+
+  .category {
+    @include removeButtonDefaultStyles;
+    font-size: 13px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 2px 14px;
+    height: 28px;
+    border: 1.6px solid map-get($colors, 'grayDarker');
+    display: flex;
+    color: map-get($colors, 'grayDark');
+    box-sizing: border-box;
+
+    &:hover, &:focus {
+      background-color: map-get($colors, 'grayDarker');
+    }
+
+    &.active {
+      color: map-get($colors, 'white');
+      background: map-get($accents, 'accentPrimary');
+      border-image: map-get($accents, 'accentPrimary');
+      border-image-slice: 1;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: map-get($colors, 'white');
+    }
+  }
+}

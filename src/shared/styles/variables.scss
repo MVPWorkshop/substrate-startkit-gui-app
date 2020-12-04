@@ -1,1 +1,26 @@
+$colors: (
+  'substrateGray': #242424,
+  'white': #FFFFFF,
+  'black': #000000,
+  'grayLighter': #D8D8D8,
+  'grayDark': #9B9B9B,
+  'grayDarker': #4A4A4A,
+  'grayDarkest': #252525,
+  'grayHighlight': #1B1A1A,
+  'pink': #FF1864,
+  'green': #18FFB2,
+  'purple': #AA84C6,
+  'purpleGradient': linear-gradient(231.13deg, #6B98F5 -20.32%, #AA84C6 40.05%, #DCC5CE 109.92%),
+);
+
+$accents: (
+  'accentPrimary': map-get($colors, 'purpleGradient'),
+  'accentSecondary': map-get($colors, 'pink'),
+  'accentTertiary': map-get($colors, 'green'),
+);
+
 $defaultFontSize: 16px;
+$backgroundColor: map-get($colors, 'black');
+
+$sidebarWidth: 120px;
+$sidebarMenuWidth: 329px;

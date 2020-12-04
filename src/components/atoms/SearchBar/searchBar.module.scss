@@ -1,0 +1,20 @@
+@import '../../../shared/styles/variables';
+
+.searchBar {
+  background-color: map-get($colors, 'grayDarkest');
+  height: 44px;
+  width: 100%;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+
+  .textInput {
+    background: none;
+    border: none;
+    color: map-get($colors, 'grayDark');
+    font-size: 14px;
+    outline: none;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

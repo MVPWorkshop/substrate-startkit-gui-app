@@ -1,0 +1,31 @@
+@import '../../../shared/styles/variables';
+
+.workspacePage {
+  max-width: 100vw;
+  max-height: 100vh;
+  display: flex;
+
+  .sidebarContent {
+    width: $sidebarWidth;
+    align-self: stretch;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+
+  .workspaceContent {
+    max-height: 100%;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    padding: 48px 48px 48px 0;
+    flex-direction: column;
+  }
+
+  .resetButton {
+    margin-right: 36px;
+
+    &:hover, &:active, &:focus {
+      color: map-get($colors, 'pink')
+    }
+  }
+}

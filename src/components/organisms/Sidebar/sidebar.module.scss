@@ -1,0 +1,21 @@
+@import '../../../shared/styles/variables';
+
+.sidebar {
+  padding: 16px 0;
+  height: 100%;
+  width: 100%;
+  background-color: map-get($colors, 'substrateGray');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  .logoIcon {
+    width: 82px;
+    height: 82px;
+  }
+
+  .menuIconsArea {
+    width: 100%;
+  }
+}

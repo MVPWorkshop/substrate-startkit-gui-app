@@ -1,4 +1,29 @@
+@import './variables';
+
+html, body {
+  font-family: 'Roboto';
+  font-size: $defaultFontSize;
+  color: $white;
+}
+
 html, body, #root {
   height: 100%;
   width: 100%;
+  background-color: $backgroundColor;
+}
+
+/* width */
+::-webkit-scrollbar, ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
+  width: 2px;
+  height: 2px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: map-get($colors, 'pink');
+}
+
+.vis-network {
+  outline: none;
 }

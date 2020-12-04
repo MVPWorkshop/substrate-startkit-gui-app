@@ -1,0 +1,15 @@
+@import '../../../shared/styles/variables';
+
+.workspaceTemplateContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: $sidebarMenuWidth + 30px;
+
+  .textContent {
+    max-width: 580px;
+    text-align: center;
+  }
+}

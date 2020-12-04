@@ -1,0 +1,38 @@
+@import '../../../shared/styles/variables';
+@import "../../../shared/styles/mixins";
+
+.graphNodeOptions {
+  position: absolute;
+  z-index: 4;
+  background-color: map-get($colors, 'grayDarker');
+  animation: fadeIn 0.3s;
+  display: flex;
+  flex-direction: row;
+
+  .hoverSidebar {
+    height: 100%;
+    background-color: map-get($colors, 'purple');
+  }
+
+  .optionButton {
+    @include removeButtonDefaultStyles;
+    background-color: map-get($colors, 'grayDarkest');
+    display: flex;
+    align-items: center;
+    padding: 0;
+    justify-content: center;
+
+    &:hover {
+      background-color:map-get($colors, 'purple') ;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

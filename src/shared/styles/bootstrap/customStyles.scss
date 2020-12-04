@@ -1,0 +1,134 @@
+@import "../variables";
+@import "../mixins";
+@import './customVariables';
+@import '~bootstrap/scss/bootstrap.scss';
+
+$primaryButtonColor: map-get($colors, 'purple');
+$primaryButtonGradientColor: map-get($accents, 'accentPrimary');
+$secondaryButtonColor: map-get($accents, 'accentSecondary');
+$tertiaryButtonColor: map-get($accents, 'accentTertiary');
+
+.btn {
+  font-family: 'Poppins';
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 0;
+
+  &:active, &:focus {
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+}
+
+.btn-primary {
+  background: $primaryButtonGradientColor;
+  border: none;
+  color: $white;
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $black;
+    }
+  }
+}
+
+.btn-outline-primary {
+  text-transform: unset;
+  background-image: $primaryButtonGradientColor;
+  border: 2px solid;
+  border-image: $primaryButtonGradientColor;
+  border-image-slice: 1;
+  -webkit-background-clip: text;
+
+  span {
+    background: $primaryButtonGradientColor;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: $white;
+
+      span {
+        background: $white;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+
+.btn-secondary {
+  @include button-variant($secondaryButtonColor, $secondaryButtonColor);
+
+  &:not(.disabledElement) {
+    &:active, &:focus, &:hover {
+      color: $black;
+    }
+  }
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($secondaryButtonColor);
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $white;
+      background-color: $secondaryButtonColor;
+    }
+  }
+}
+
+.btn-tertiary {
+  background: none;
+  @include button-variant($tertiaryButtonColor, $tertiaryButtonColor);
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      color: $white;
+    }
+  }
+}
+
+.btn-tertiary-outline {
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  @include button-outline-variant($tertiaryButtonColor, $tertiaryButtonColor);
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      background-color: $tertiaryButtonColor;
+      border-color: $tertiaryButtonColor;
+      color: $black;
+    }
+  }
+}
+
+.btn-flat {
+  background: none;
+
+  &:not(.disabledElement) {
+    &:hover, &:active, &:focus {
+      background: none;
+      color: $primaryButtonColor
+    }
+  }
+}
+
+.modal-content {
+  background-color: $black;
+  max-width: 524px;
+}
+
+.modal-title {
+  background-color: map-get($colors, 'black');
+  padding: 20px 20px 0;
+}
+
+.modal-body {
+  background-color: map-get($colors, 'black');
+  padding: 40px 64px;
+}

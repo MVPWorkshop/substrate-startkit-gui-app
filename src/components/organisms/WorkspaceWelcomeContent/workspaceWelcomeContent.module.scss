@@ -1,0 +1,17 @@
+.workspaceWelcomeContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 580px;
+
+  .welcomeImg {
+    max-width: 208px;
+    height: auto;
+    margin-bottom: 38px;
+  }
+
+  .createNewBlockchainBtn {
+    padding: 16px 24px;
+  }
+}

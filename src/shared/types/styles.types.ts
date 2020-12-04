@@ -1,0 +1,24 @@
+export enum EAccent {
+  PRIMARY = 'PRIMARY',
+  SECONDARY = 'SECONDARY',
+  TERTIARY = 'TERTIARY'
+}
+
+// Colors available in the app
+export enum EColor {
+  WHITE = 'WHITE',
+  BLACK = 'BLACK',
+  GRAY_LIGHTER = 'GRAY_LIGHTER',
+  GRAY_DARK = 'GRAY_DARK',
+  GRAY_DARKER = 'GRAY_DARKER',
+  GRAY_DARKEST = 'GRAY_DARKEST',
+  PINK = 'PINK',
+  GREEN = 'GREEN',
+  PURPLE_GRADIENT = 'PURPLE_GRADIENT',
+  SUBSTRATE_GRAY = 'SUBSTRATE_GRAY'
+}
+
+export enum EFontFamily {
+  ROBOTO = 'ROBOTO',
+  POPPINS = 'POPPINS'
+}

@@ -1,10 +1,15 @@
 .appButton {
   font-style: normal;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 13px;
-}
 
-.uppercase {
-  text-transform: uppercase;
+  &.flat {
+    border: none;
+    background: none;
+  }
+
+  &.uppercase {
+    text-transform: uppercase;
+  }
 }

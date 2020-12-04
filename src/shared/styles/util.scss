@@ -1,0 +1,67 @@
+@import 'variables';
+@import 'mixins';
+
+$fontSizes: 64;
+
+// Mixin for generating font size and line height classes (fs-1, lh-1, ... fs-64, lh-64)
+@mixin fs-x-list {
+  @for $i from 1 through $fontSizes {
+    .fs-#{$i} {
+      font-size: pxToRem($i * 1px);
+    }
+    .lh-#{$i} {
+      line-height: pxToRem($i * 1px);
+    }
+  }
+}
+
+@include fs-x-list;
+
+@each $name, $glyph in $colors {
+  // color-white, color-red ....
+  .color-#{$name} {
+    @if $name == purpleGradient {
+      background: $glyph;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    } @else {
+      color: $glyph;
+    }
+  }
+
+  // bg-color-white, bg-color-red ...
+  .bg-color-#{$name} {
+    background-color: $glyph;
+  }
+}
+
+@each $name, $glyph in $accents {
+  // color-accent-main, color-accent.secondary ....
+  .color-accent-#{$name} {
+    color: $glyph;
+  }
+
+  // bg-color-accent-main, bg-color-accent.secondary ...
+  .bg-color-accent-#{$name} {
+    background-color: $glyph;
+  }
+}
+
+.ff-roboto {
+  font-family: 'Roboto';
+}
+
+.ff-poppins {
+  font-family: 'Poppins';
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
